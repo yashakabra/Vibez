@@ -9,15 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Codebotsapp">
+<<<<<<< HEAD
         <activity android:name=".MainActivity">
 
 
+=======
+        <activity android:name=".CreateActivity"></activity>
+        <activity android:name=".EnterActivity" />
+        <activity android:name=".LoginActivity">
+>>>>>>> e371bf7463472cb77f722740e08266c62b20cfeb
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
