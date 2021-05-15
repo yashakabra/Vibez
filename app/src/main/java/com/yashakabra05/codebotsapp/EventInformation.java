@@ -18,7 +18,6 @@ public class EventInformation  extends AppCompatActivity  {
 
      TextView name,date,time,info,t_cost;
      ImageView ivimage;
-     event_details obj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,14 @@ public class EventInformation  extends AppCompatActivity  {
         t_cost = findViewById(R.id.tvprice);
         ivimage = findViewById(R.id.ivimage);
 
-        ed.add(new event_details("MUSIC CONCERT","12/05/2021","5.00 PM","ARJIT SINGH IS COMING","500 RS","PARADE GROUND , AGRA","pic1"));
+        ed.add(new event_details("MUSIC CONCERT","12/05/2021","5.00 PM","We present you here an event management cum assistance app which not only provides a\n" +
+                "hassle free environment to the event manager to manage his event\n" +
+                " but also embarks the user with full \n" +
+                "assistance from the start of the event to the end.\n" +
+                "here our user is not just provided with an enhanced ticket booking service but also\n" +
+                "a complete  guidance and assistance throughout the event like cab booking service right \n" +
+                "at a click, a complete map of the event spot for knowing the location of basic nessisities\n" +
+                "and the most important services like emergeny ","500 RS","PARADE GROUND , AGRA","pic1"));
 
         name.setText(ed.get(0).getName());
         date.setText(ed.get(0).getDate());
