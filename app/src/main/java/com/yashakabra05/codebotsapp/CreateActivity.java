@@ -74,6 +74,8 @@ public class CreateActivity extends AppCompatActivity {
                                     editor.putString("name", etname2.getText().toString());
                                     editor.apply();
 
+
+
                                     Intent intent = new Intent(CreateActivity.this, EnterActivity.class);
                                     startActivity(intent);
                                     finish();

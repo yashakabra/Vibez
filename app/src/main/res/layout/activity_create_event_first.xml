@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Create_event_first_Activity">
+
+
+    <ImageView
+        android:id="@+id/event_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@mipmap/ic_pic" />
+
+    <EditText
+        android:id="@+id/event_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Event Name"
+        android:layout_below="@id/event_pic"/>
+
+    <EditText
+        android:id="@+id/event_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Type of event"
+        android:layout_below="@id/event_name" />
+
+    <EditText
+        android:id="@+id/event_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="location"
+        android:layout_below="@id/event_type"/>
+
+    <EditText
+        android:id="@+id/event_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="date"
+        android:layout_below="@id/event_location"/>
+
+    <EditText
+        android:id="@+id/event_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Time"
+        android:layout_below="@id/event_date"/>
+
+    <ImageView
+        android:id="@+id/event_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_below="@id/event_time"
+        android:src="@mipmap/ic_pic"/>
+
+    <EditText
+        android:id="@+id/event_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Info"
+        android:layout_below="@id/event_map"/>
+
+    <EditText
+        android:id="@+id/event_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Emergency Contact no. for audience"
+        android:layout_below="@id/event_info"/>
+
+    <Button
+        android:id="@+id/btnnextsec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:layout_below="@id/event_contact"/>
+
+
+
+</RelativeLayout>

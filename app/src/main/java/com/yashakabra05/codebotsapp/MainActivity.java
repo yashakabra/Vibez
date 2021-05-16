@@ -11,8 +11,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent it = new Intent(MainActivity.this,com.yashakabra05.codebotsapp.EventInformation.class);
-        startActivity(it);
+     //   Intent it = new Intent(MainActivity.this,com.yashakabra05.codebotsapp.EventInformation.class);
+     //   startActivity(it);
 
     }
 }
