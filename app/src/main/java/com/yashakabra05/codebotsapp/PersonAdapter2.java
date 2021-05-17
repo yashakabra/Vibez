@@ -47,6 +47,7 @@ public class PersonAdapter2 extends RecyclerView.Adapter<PersonAdapter2.ViewHold
 vector.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
+        vector.setImageResource(R.drawable.ic_baseline_favorite_24);
         activity.onItemSelectedEvent(event2.indexOf(v.getTag()));
     }
 

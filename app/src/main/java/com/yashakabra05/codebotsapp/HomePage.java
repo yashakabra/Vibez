@@ -171,6 +171,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
     @Override
     public void onItemSelectedEvent(int index) {
         Favourite.items.add(list2.get(index));
+
 //favourites.add(list2.get(i));
 
 
