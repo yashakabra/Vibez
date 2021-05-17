@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Create_event_sec_Activity">
+
+    <EditText
+        android:id="@+id/event_ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="No. of tickets"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/event_tprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="price of ticket"
+        android:layout_below="@id/event_ticket"/>
+
+    <EditText
+        android:id="@+id/event_pro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Promotion(Y/N)"
+        android:layout_below="@id/event_tprice"/>
+
+    <TextView
+        android:id="@+id/event_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XYZ"
+        android:layout_below="@id/event_pro"/>
+
+    <Button
+        android:id="@+id/event_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_below="@id/event_fee"/>
+</RelativeLayout>

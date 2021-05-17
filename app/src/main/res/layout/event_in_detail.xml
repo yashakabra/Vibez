@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_pic"
+            android:id="@+id/event_pic3"/>
+
+        <TextView
+        android:id="@+id/event_name3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event name"
+            android:layout_below="@+id/event_pic3"/>
+
+    <TextView
+        android:id="@+id/event_type3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type of event"
+        android:layout_below="@id/event_type3"/>
+
+    <TextView
+        android:id="@+id/event_date3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:layout_below="@id/event_date3"/>
+
+    <TextView
+        android:id="@+id/event_time3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time"
+        android:layout_below="@id/event_date3"/>
+
+    <TextView
+        android:id="@+id/event_info3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Info"
+        android:layout_below="@id/event_time3"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/event_map3"
+            android:src="@mipmap/ic_pic"
+            android:layout_below="@id/event_info3"/>
+
+        <TextView
+            android:id="@+id/event_location3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:layout_below="@id/event_map3"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/google_map3"
+        android:layout_below="@id/event_location3">
+    </FrameLayout>
+
+        <Button
+            android:id="@+id/btn_buy_ticket3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XYZ"
+            android:layout_below="@id/google_map3"/>
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

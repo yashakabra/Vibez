@@ -1,9 +1,6 @@
 package com.yashakabra05.codebotsapp;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.yashakabra05.codebotsapp.Class.event_details;
 
 import java.util.ArrayList;
 
@@ -35,7 +34,7 @@ public class EventInformation  extends AppCompatActivity  {
         tvlocation = findViewById(R.id.tvlocation);
         ivlocation = findViewById(R.id.ivlocation);
 
-        ed.add(new event_details("MUSIC CONCERT","12/05/2021","5.00 PM","We present you here an event management cum assistance app which not only provides a\n" +
+    /*    ed.add(new event_details("MUSIC CONCERT","12/05/2021","5.00 PM","We present you here an event management cum assistance app which not only provides a\n" +
                 "hassle free environment to the event manager to manage his event\n" +
                 " but also embarks the user with full \n" +
                 "assistance from the start of the event to the end.\n" +
@@ -51,6 +50,7 @@ public class EventInformation  extends AppCompatActivity  {
         t_cost.setText(ed.get(0).getT_cost());
         tvlocation.setText(ed.get(0).getLocation());
         ivimage.setImageResource(R.drawable.mercedes);
+        **/
 
         ivlocation.setOnClickListener(new View.OnClickListener() {
             @Override
