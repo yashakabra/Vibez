@@ -2,7 +2,9 @@ package com.yashakabra05.codebotsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +28,16 @@ public class Profile_firstpage extends AppCompatActivity {
        tv_profiletel = findViewById(R.id.et_profiletel);
        tv_profileemail = findViewById(R.id.et_profileemail);
        btn_profileedit = findViewById(R.id.btn_profileedit);
+
+
+
+       btn_profileedit.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent it = new Intent(Profile_firstpage.this,com.yashakabra05.codebotsapp.Profile_secondpage.class);
+               startActivity(it);
+           }
+       });
 
     }
 }
