@@ -45,6 +45,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
         event_details details = list.get(position);
 
+        database = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
+
         holder.event_name2.setText(details.getEvent_name());
         holder.event_location2.setText(details.getLocation());
         holder.event_time2.setText(details.getTime());
@@ -72,7 +75,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.btn_event_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                details.setFav(true);
+                database.getReference().child("fav event").child(auth.getCurrentUser().getUid()).push().setValue(details);
+
             }
         });
 

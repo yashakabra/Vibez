@@ -16,7 +16,8 @@ public class event_details {
     private String location;
     private String manager_num;
     private String event_pro;
-    private boolean fav = false;
+
+
 
 
     public event_details(String event_name, String date, String time, String event_type, String event_pic, String guide_pic, String info, String t_cost, String t_num, String location, String manager_num) {
@@ -55,14 +56,6 @@ public class event_details {
     }
 
     public event_details() {}
-
-    public boolean isFav() {
-        return fav;
-    }
-
-    public void setFav(boolean fav) {
-        this.fav = fav;
-    }
 
     public String getEvent_name() {
         return event_name;

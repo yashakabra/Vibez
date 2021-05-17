@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Codebotsapp">
-        <activity android:name=".Event_in_detailActivity"></activity>
-        <activity android:name=".HomeActivity" >
+        <activity android:name=".Event_in_detailActivity" />
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,9 +22,7 @@
         <activity android:name=".Manager_on_event_Activity" />
         <activity android:name=".Create_event_sec_Activity" />
         <activity android:name=".Create_event_first_Activity" />
-        <activity android:name=".Manage_eventActivity">
-
-        </activity>
+        <activity android:name=".Manage_eventActivity"></activity>
         <activity android:name=".EventInformation" />
         <activity android:name=".MainActivity" />
         <activity android:name=".CreateActivity" />

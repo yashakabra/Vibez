@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,12 +14,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.io.IOException;
+import java.util.Locale;
+
+import static java.security.AccessController.getContext;
 
 public class Create_event_first_Activity extends AppCompatActivity {
 
@@ -45,6 +56,19 @@ public class Create_event_first_Activity extends AppCompatActivity {
         event_map = findViewById(R.id.event_map);
         event_pic = findViewById(R.id.event_pic);
         btnnextsec = findViewById(R.id.btnnextsec);
+
+
+        event_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlacePicker.IntentBuilder
+            }
+        });
+
+
+
+
+
 
         btnnextsec.setOnClickListener(new View.OnClickListener() {
             @Override
