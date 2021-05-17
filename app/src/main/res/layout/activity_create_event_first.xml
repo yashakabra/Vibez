@@ -1,89 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/blue_light"
     tools:context=".Create_event_first_Activity">
 
 
-    <ImageView
-        android:id="@+id/event_pic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@mipmap/ic_pic" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/event_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Event Name"
-        android:layout_below="@id/event_pic"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/event_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Type of event"
-        android:layout_below="@id/event_name" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="807dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/border_profile">
 
-    <EditText
-        android:id="@+id/event_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="location"
-        android:layout_below="@id/event_type"/>
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="ENTER EVENT DETAILS"
+                    android:textColor="@color/black"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/event_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="date"
-        android:layout_below="@id/event_location"/>
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="108dp"
+                    android:layout_height="3dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="65dp"
+                    android:background="@color/black" />
 
-    <EditText
-        android:id="@+id/event_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Time"
-        android:layout_below="@id/event_date"/>
+                <ImageView
+                    android:id="@+id/event_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="125dp"
+                    tools:srcCompat="@mipmap/ic_pic" />
 
-    <ImageView
-        android:id="@+id/event_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars"
-        android:layout_below="@id/event_time"
-        android:src="@mipmap/ic_pic"/>
+                <EditText
+                    android:id="@+id/event_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="175dp"
+                    android:ems="10"
+                    android:hint="Event Name" />
 
-    <EditText
-        android:id="@+id/event_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Info"
-        android:layout_below="@id/event_map"/>
+                <EditText
+                    android:id="@+id/event_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="225dp"
+                    android:ems="10"
+                    android:hint="Type of event" />
 
-    <EditText
-        android:id="@+id/event_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Emergency Contact no. for audience"
-        android:layout_below="@id/event_info"/>
+                <EditText
+                    android:id="@+id/event_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="275dp"
+                    android:ems="10"
+                    android:hint="location" />
 
-    <Button
-        android:id="@+id/btnnextsec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:layout_below="@id/event_contact"/>
+                <EditText
+                    android:id="@+id/event_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="325dp"
+                    android:ems="10"
+                    android:hint="date" />
+
+                <EditText
+                    android:id="@+id/event_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="375dp"
+                    android:ems="10"
+                    android:hint="Time" />
+
+                <ImageView
+                    android:id="@+id/event_map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="450dp"
+                    android:src="@mipmap/ic_pic"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <EditText
+                    android:id="@+id/event_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="600dp"
+                    android:ems="10"
+                    android:hint="Info" />
+
+                <EditText
+                    android:id="@+id/event_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="650dp"
+                    android:ems="10"
+                    android:hint="Emergency Contact no. for audience" />
+
+                <Button
+                    android:id="@+id/btnnextsec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="700dp"
+                    android:text="Next" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
-
-</RelativeLayout>
+</LinearLayout>
