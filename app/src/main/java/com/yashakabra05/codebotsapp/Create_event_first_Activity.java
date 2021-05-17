@@ -58,14 +58,14 @@ public class Create_event_first_Activity extends AppCompatActivity {
         btnnextsec = findViewById(R.id.btnnextsec);
 
 
-        event_location.setOnClickListener(new View.OnClickListener() {
+       /* event_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PlacePicker.IntentBuilder
+                PlacePicker.IntentBuilder;
             }
         });
 
-
+        */
 
 
 
