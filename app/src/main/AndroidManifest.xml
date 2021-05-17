@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yashakabra05.codebotsapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +22,37 @@
         <activity android:name=".contactus" />
         <activity android:name=".Profile" />
         <activity android:name=".Filter" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+
+        <activity android:name=".Profile_secondpage"/>
+        <activity android:name=".Profile_firstpage" />
+        <activity android:name=".EventInformation" />
+        <activity android:name=".MainActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".Event_in_detailActivity" />
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Manager_on_event_Activity" />
+        <activity android:name=".Create_event_sec_Activity" />
+        <activity android:name=".Create_event_first_Activity" />
+
+        <activity android:name=".Manage_eventActivity"/>
+        <activity android:name=".CreateActivity" />
+
+        <activity android:name=".MainActivity"
+            tools:ignore="DuplicateActivity"/>
+
+        <activity android:name=".CreateActivity"
+            tools:ignore="DuplicateActivity"></activity>
+
+        <activity android:name=".EnterActivity" />
+        <activity android:name=".LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

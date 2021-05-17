@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "422162664674",
+    "project_id": "codebotsapp-bf97b",
+    "storage_bucket": "codebotsapp-bf97b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422162664674:android:a4f578401757ecbedd22bb",
+        "android_client_info": {
+          "package_name": "com.yashakabra05.codebotsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422162664674-p6o7fs4e4ku2jr6tceo2ed05jran99fc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbB_qxXFPiPuiA4O8brnN3H-sf1TWr2Fc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422162664674-p6o7fs4e4ku2jr6tceo2ed05jran99fc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
