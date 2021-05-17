@@ -9,6 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Codebotsapp">
+        <activity android:name=".awy"></activity>
+        <activity android:name=".HomePage" />
+        <activity android:name=".EventCalled" />
+        <activity android:name=".Favourite" />
+        <activity android:name=".event" />
+        <activity android:name=".Feedback" />
+        <activity android:name=".help" />
+        <activity android:name=".contactus" />
+        <activity android:name=".Profile" />
+        <activity android:name=".Filter" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
