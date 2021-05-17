@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yashakabra05.codebotsapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Codebotsapp">
+
 
 
         <activity android:name=".Profile_secondpage"/>
@@ -31,8 +33,16 @@
 
         <activity android:name=".Manage_eventActivity"/>
         <activity android:name=".CreateActivity" />
+
+        <activity android:name=".MainActivity"
+            tools:ignore="DuplicateActivity"/>
+
+        <activity android:name=".CreateActivity"
+            tools:ignore="DuplicateActivity"></activity>
+
         <activity android:name=".EnterActivity" />
         <activity android:name=".LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

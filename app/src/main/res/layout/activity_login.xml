@@ -1,45 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/grad_login"
     tools:context=".LoginActivity">
 
-    <EditText
-        android:id="@+id/etemail1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="E-mail"
-        android:layout_marginTop="50sp"
-        android:layout_centerHorizontal="true"/>
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
 
-    <EditText
-        android:id="@+id/etpswd1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:layout_below="@id/etemail1"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/border_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnsignin1"
-        android:layout_below="@id/etpswd1"
-        android:text="Sign in"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20sp"/>
+        <EditText
+            android:id="@+id/etemail1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="130dp"
+            android:hint="E-mail"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColorHint="@color/black" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvsignin1"
-        android:layout_below="@id/btnsignin1"
-        android:layout_marginTop="40sp"
-        android:text="Haven't signed up?"
-        android:layout_alignParentRight="true"/>
+        <EditText
+            android:id="@+id/etpswd1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etemail1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="180dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColorHint="@color/black" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/btnsignin1"
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etpswd1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="90dp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="250dp"
+            android:text="log in"
+            app:backgroundTint="@color/black" />
+
+        <TextView
+            android:id="@+id/tvsignin1"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/btnsignin1"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="230dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="320dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:text="Haven't signed up?"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="80dp"
+            android:text="USER LOGIN"
+            android:textColor="@color/black"
+            android:textSize="34dp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="72dp"
+            android:layout_height="3dp"
+            android:layout_marginStart="145dp"
+            android:layout_marginLeft="145dp"
+            android:layout_marginTop="80dp"
+            android:background="@color/black"
+            android:scrollbarSize="4sp" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
