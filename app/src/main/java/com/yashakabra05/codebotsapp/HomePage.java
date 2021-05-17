@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2 {
     ImageView home,search,favourite,calendar;
     final int filt=1;
+
+
 
 
     public static ArrayList<Images> list;
@@ -41,6 +44,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
         search=findViewById(R.id.ivSearch);
         favourite=findViewById(R.id.ivFavourite);
         calendar=findViewById(R.id.ivCalendar);
+
         //lv=findViewById(R.id.lv;
         home.setImageResource(R.drawable.homec);
         intentEventCalled=new Intent(HomePage.this,com.yashakabra05.codebotsapp.EventCalled.class);
@@ -51,6 +55,8 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 home.setImageResource(R.drawable.home);
                 favourite.setImageResource(R.drawable.favourite);
                 calendar.setImageResource(R.drawable.calendar);
+                Intent intentSearch=new Intent(HomePage.this,Search.class);
+                startActivity(intentSearch);
             }
         });
         favourite.setOnClickListener(new View.OnClickListener() {
@@ -158,7 +164,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
 
     @Override
     public void onItemImage(int index) {
-        EventCalled.selected.add(list2.get(index));
+        intentEventCalled.putExtra("name of event",list2.get(index).getEventName());
         startActivity(intentEventCalled);
     }
 
