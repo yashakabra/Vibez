@@ -10,6 +10,8 @@ import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,18 +29,21 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import static java.security.AccessController.getContext;
 
 public class Create_event_first_Activity extends AppCompatActivity {
 
-    EditText event_name, event_type, event_location, event_date, event_time, event_info, event_contact;
+    EditText event_name, event_location, event_date, event_time, event_info, event_contact;
+    AutoCompleteTextView event_type;
     ImageView event_map, event_pic;
     Button btnnextsec;
     FirebaseDatabase database;
     FirebaseAuth auth;
     FirebaseStorage storage;
+    ArrayList<String> types = new ArrayList<String>();
 
 
     @Override
@@ -57,6 +62,18 @@ public class Create_event_first_Activity extends AppCompatActivity {
         event_pic = findViewById(R.id.event_pic);
         btnnextsec = findViewById(R.id.btnnextsec);
 
+        types.add("songs");
+        types.add("dance");
+        types.add("sports");
+        types.add("comedy");
+        types.add("award");
+        types.add("theatre");
+        types.add("dance");
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.search_autocomplete_element,types);
+        event_type.setThreshold(0);
+        event_type.setAdapter(adapter);
+
 
        /* event_location.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,10 +83,6 @@ public class Create_event_first_Activity extends AppCompatActivity {
         });
 
         */
-
-
-
-
         btnnextsec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -19,11 +19,12 @@ public class Create_event_sec_Activity extends AppCompatActivity {
 
     EditText  event_tprice, event_pro;
     EditText event_ticket;
-    TextView event_fee;
-    Button event_sub;
+    TextView event_fee,total_cost,tv_pay;
+    Button event_sub,btn_pay;
     FirebaseAuth auth;
     FirebaseDatabase database;
     int price=0, noofticket=0, feeproY, feeproN;
+    String total;
 
 
     @Override
@@ -34,8 +35,25 @@ public class Create_event_sec_Activity extends AppCompatActivity {
         event_ticket = findViewById(R.id.event_ticket);
         event_tprice = findViewById(R.id.event_tprice);
         event_pro = findViewById(R.id.event_pro);
-        event_fee = findViewById(R.id.event_fee);
         event_sub = findViewById(R.id.event_sub);
+        total_cost = findViewById(R.id.total_cost);
+        tv_pay = findViewById(R.id.tv_pay);
+        btn_pay = findViewById(R.id.btn_pay);
+
+        tv_pay.setVisibility(View.GONE);
+        btn_pay.setVisibility(View.GONE);
+        total_cost.setVisibility(View.GONE);
+
+        if(event_pro.getText().toString().equals("yes"))
+        {
+            total = "3000rs";
+        }
+        else
+        {
+            total = "2000rs";
+        }
+
+        total_cost.setText(total);
 
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -61,6 +79,15 @@ public class Create_event_sec_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                tv_pay.setVisibility(View.VISIBLE);
+                btn_pay.setVisibility(View.VISIBLE);
+                total_cost.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn_pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 SharedPreferences getshared = getSharedPreferences("manager", Context.MODE_PRIVATE);
                 String event_name  = getshared.getString("event_name","not known");
                 String event_type  = getshared.getString("event_type","not known");
@@ -79,7 +106,6 @@ public class Create_event_sec_Activity extends AppCompatActivity {
                 Intent intent = new Intent(Create_event_sec_Activity.this, Manage_eventActivity.class);
                 startActivity(intent);
                 finish();
-
             }
         });
 
