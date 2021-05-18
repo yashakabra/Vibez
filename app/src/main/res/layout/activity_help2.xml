@@ -20,7 +20,7 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="300dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
@@ -29,6 +29,34 @@
                 android:backgroundTint="#FFFFFF"
                 android:background="@drawable/border_profile">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                <EditText
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center_horizontal"
+                    android:text="HELP SERVICE"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="TextView" />
+                </LinearLayout>
             </FrameLayout>
         </LinearLayout>
     </ScrollView>
