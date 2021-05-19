@@ -16,6 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2 {
@@ -46,6 +53,12 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
         search=findViewById(R.id.ivSearch);
         favourite=findViewById(R.id.ivFavourite);
         calendar=findViewById(R.id.ivCalendar);
+
+        rv2=findViewById(R.id.recyclerview2);
+        rv2.setHasFixedSize(true);
+
+        rv=findViewById(R.id.recyclerview1);
+        rv.setHasFixedSize(true);
 
         //lv=findViewById(R.id.lv;
         home.setImageResource(R.drawable.homec);
@@ -92,8 +105,9 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
             }
         });
 
-        rv=findViewById(R.id.recyclerview1);
-        rv.setHasFixedSize(true);
+
+
+
         String s="delhi";
         list=new ArrayList<Images>();
         list1=new ArrayList<Images>();      //for popular events
@@ -101,42 +115,53 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
         list11=new ArrayList<Images>();
         list22=new ArrayList<Images>();
 
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("events");
+
+        ref.addValueEventListener(new ValueEventListener() {
+                                      @Override
+                                      public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                          list.clear();
+                                          for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                                              Images d = snapshot1.getValue(Images.class);
+                                              list.add(d);
+                                              if(d.getEvent_pro().equals("yes"))
+                                              {
+                                                  list1.add(d);
+                                              }
+                                          }
+                                          myadapter.notifyDataSetChanged();
+                                          myadapter2.notifyDataSetChanged();
+                                      }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         favourites=new ArrayList<Images>();
-        list.add(new Images("delhi","ganesh chaturthi","11/11/2001","price: 500","song","eve1","yes"));
-        list.add(new Images("delhi","dipawali","11/11/2002","price: 500","dance","eve2","yes"));
-        list.add(new Images("delhi","holi","11/11/2003","price: 500","sports","eve3","yes"));
-        list.add(new Images("delhi","happy new year","11/11/2001","price: 500","song","eve1","yes"));
+        /*
         for(int i=0;i<list.size();i++)
         {
-            if((list.get(i).getCityName().equals(s)))
-            {
-                if(list.get(i).getPopularity().equals("yes"))
+                if(list.get(i).getEvent_pro().equals("yes"))
                 {
                     list1.add(list.get(i));
                 }
-                list2.add(list.get(i));
-
-
-            }
         }
+         */
+        myadapter2=new PersonAdapter2(HomePage.this,list);
+        rv2.setAdapter(myadapter2);
 
         myadapter=new PersonAdapter(this,list1);
         rv.setAdapter(myadapter);
 
-
-
         layoutmanager=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
         rv.setLayoutManager(layoutmanager);
-        rv2=findViewById(R.id.recyclerview2);
-        rv2.setHasFixedSize(true);
 
 
-        myadapter2=new PersonAdapter2(this,list2);
-        rv2.setAdapter(myadapter2);
-        layoutmanager2=new LinearLayoutManager(this);
+        layoutmanager2=new LinearLayoutManager(HomePage.this);
         rv2.setLayoutManager(layoutmanager2);
-
-
     }
 
     @Override
@@ -169,7 +194,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
 
     @Override
     public void onItemImage(int index) {
-        intentEventCalled.putExtra("name of event",list2.get(index).getEventName());
+        intentEventCalled.putExtra("name of event",list2.get(index).getEvent_name());
         startActivity(intentEventCalled);
     }
 
@@ -194,14 +219,14 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 type=data.getStringExtra("cateogary");
                 for(int i=0;i<list1.size();i++)
                 {
-                    if((list1.get(i).getCateogary().equals(type)))
+                    if((list1.get(i).getEvent_type().equals(type)))
                     {
                         list11.add(list1.get(i));
                     }
                 }
                 for(int i=0;i<list2.size();i++)
                 {
-                    if((list2.get(i).getCateogary().equals(type)))
+                    if((list2.get(i).getEvent_type().equals(type)))
                     {
                         list22.add(list2.get(i));
                     }

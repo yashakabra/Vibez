@@ -10,10 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class PersonAdapter2 extends RecyclerView.Adapter<PersonAdapter2.ViewHolder>
 {
+    Context context;
     ArrayList<Images> event2;
     ItemSelected2 activity;
     public interface ItemSelected2
@@ -22,7 +26,7 @@ public class PersonAdapter2 extends RecyclerView.Adapter<PersonAdapter2.ViewHold
         void onItemImage(int index);
     }
     public PersonAdapter2(Context context, ArrayList<Images> list)
-    {
+    {   super();
         activity=(ItemSelected2)context;
         event2=list;
     }
@@ -37,9 +41,6 @@ public class PersonAdapter2 extends RecyclerView.Adapter<PersonAdapter2.ViewHold
             super(itemView);
             ivEventPhoto= itemView.findViewById(R.id.ivRv2);
             vector= itemView.findViewById(R.id.vectorRv2);
-
-
-
             tvName= itemView.findViewById(R.id.tvName);
             tvDate= itemView.findViewById(R.id.tvDate);
             tvPrice=itemView.findViewById(R.id.tvPrice);
@@ -82,51 +83,17 @@ ivEventPhoto.setOnClickListener(new View.OnClickListener() {
        // holder.itemView.setTag(event2.get(position));
         holder.vector.setTag(event2.get(position));
         holder.ivEventPhoto.setTag(event2.get(position));
-        holder.tvName.setText(event2.get(position).getEventName());
+        holder.tvName.setText(event2.get(position).getEvent_name());
         holder.tvDate.setText(event2.get(position).getDate());
-        holder.tvPrice.setText(event2.get(position).getPrice());
-        if(event2.get(position).getImage().equals("eve1"))
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event1);
-        }
-        else  if(event2.get(position).getImage().equals("eve2"))
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event2);
-        }
-        else   if(event2.get(position).getImage().equals("eve3"))
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event3);
-        }
-        else   if(event2.get(position).getImage().equals("eve4"))
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event4);
-        }
-        else  if(event2.get(position).getImage().equals("eve5"))
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event5);
-        }
-        else  if(event2.get(position).getImage().equals("eve6"))
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event6);
-        }
-        else  if(event2.get(position).getImage().equals("eve7"))
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event7);
-        }
-        else  if(event2.get(position).getImage().equals("eve8"))
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event8);
-        }
-        else  if(event2.get(position).getImage().equals("eve9"))
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event9);
-        }
-        else
-        {
-            holder.ivEventPhoto.setImageResource(R.drawable.event9);
-        }
+        holder.tvPrice.setText(event2.get(position).getT_cost());
+        //Glide.with(getA).load("https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Fyc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80").placeholder(R.drawable.event2).into(holder.ivEventPhoto);
+        Picasso.get().load(event2.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(holder.ivEventPhoto);
+        //event2.get(position).getEvent_pic()
+        
+
 
     }
+
 
 
 

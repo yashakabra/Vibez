@@ -96,9 +96,13 @@ public class Create_event_sec_Activity extends AppCompatActivity {
                 String event_time  = getshared.getString("event_time","not known");
                 String  event_info = getshared.getString("event_info","not known");
                 String  event_contact = getshared.getString("event_contact","not known");
+                String event_pic = getshared.getString("event_pic","not known");//here add default pics
+                String event_guide = getshared.getString("event_guide","not known");
 
                 event_details event = new event_details(event_name, event_date, event_time, event_type, event_info,
                         event_tprice.getText().toString(), event_ticket.getText().toString(), event_location, event_contact, event_pro.getText().toString());
+                event.setEvent_pic(event_pic);
+                event.setGuide_pic(event_guide);
 
 
                 database.getReference().child("my created events").child(auth.getCurrentUser().getUid()).push().setValue(event);

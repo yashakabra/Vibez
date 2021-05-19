@@ -29,7 +29,7 @@ public class Search extends AppCompatActivity {
 
         for(int i=0;i<HomePage.list.size();i++)
         {
-            names.add(HomePage.list.get(i).getEventName());
+            names.add(HomePage.list.get(i).getEvent_name());
         }
        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.search_autocomplete_element,names);
         etEventName.setThreshold(1);
@@ -47,11 +47,11 @@ public class Search extends AppCompatActivity {
                     int count =0;
                     for(int i=0;i<HomePage.list.size();i++)
                     {
-                        if((HomePage.list.get(i).getEventName()).equals(s));
+                        if((HomePage.list.get(i).getEvent_name()).equals(s));
                         {
                             count++;
                             Intent searchIntent=new Intent(Search.this,EventCalled.class);
-                            searchIntent.putExtra("name of event",HomePage.list.get(i).getEventName());
+                            searchIntent.putExtra("name of event",HomePage.list.get(i).getEvent_name());
                             startActivity(searchIntent);
                             break;
 

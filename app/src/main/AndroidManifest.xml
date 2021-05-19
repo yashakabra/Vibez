@@ -31,13 +31,6 @@
             android:name=".MainActivity"
             tools:ignore="DuplicateActivity" />
         <activity android:name=".Event_in_detailActivity" />
-        <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".Manager_on_event_Activity" />
         <activity android:name=".Create_event_sec_Activity" />
         <activity android:name=".Create_event_first_Activity" />

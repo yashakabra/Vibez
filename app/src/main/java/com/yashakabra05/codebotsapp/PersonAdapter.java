@@ -10,11 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder>
 {
     ArrayList<Images> events;
+    Context context;
     ItemSelected activity;
     public interface ItemSelected
     {
@@ -53,36 +57,12 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
         return new ViewHolder(v);
     }
 
-
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.itemView.setTag(events.get(position));
-
-        if(events.get(position).getImage().equals("eve1"))
-        {
-            holder.iv.setImageResource(R.drawable.event1);
-        }
-        else  if(events.get(position).getImage().equals("eve2"))
-        {
-            holder.iv.setImageResource(R.drawable.event2);
-        }
-        else  if(events.get(position).getImage().equals("eve3"))
-        {
-            holder.iv.setImageResource(R.drawable.event3);
-        }
-        else  if(events.get(position).getImage().equals("eve4"))
-        {
-            holder.iv.setImageResource(R.drawable.event4);
-        }
-        else
-        {
-            holder.iv.setImageResource(R.drawable.event5);
-        }
-
+        Picasso.get().load(events.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(holder.iv);
+        //Glide.with(context).load(events.get(position).getEvent_pic()).placeholder(R.drawable.event2).into(holder.iv);
     }
-
-
 
     @Override
     public int getItemCount() {

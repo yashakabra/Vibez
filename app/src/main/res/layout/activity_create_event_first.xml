@@ -51,11 +51,12 @@
 
                 <ImageView
                     android:id="@+id/event_pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="165dp"
-                    tools:srcCompat="@mipmap/ic_pic" />
+                    android:src="@mipmap/ic_pic" />
 
                 <EditText
                     android:id="@+id/event_name"
@@ -107,12 +108,11 @@
 
                 <ImageView
                     android:id="@+id/event_map"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="595dp"
-                    android:src="@mipmap/ic_pic"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:src="@mipmap/ic_pic" />
 
                 <EditText
                     android:id="@+id/event_info"

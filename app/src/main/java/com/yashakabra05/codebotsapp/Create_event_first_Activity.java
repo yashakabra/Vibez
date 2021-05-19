@@ -1,5 +1,6 @@
 package com.yashakabra05.codebotsapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,12 +16,15 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -44,6 +48,7 @@ public class Create_event_first_Activity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseStorage storage;
     ArrayList<String> types = new ArrayList<String>();
+    String eventpic,eventguide;
 
 
     @Override
@@ -61,6 +66,9 @@ public class Create_event_first_Activity extends AppCompatActivity {
         event_map = findViewById(R.id.event_map);
         event_pic = findViewById(R.id.event_pic);
         btnnextsec = findViewById(R.id.btnnextsec);
+        auth = FirebaseAuth.getInstance();
+        storage  = FirebaseStorage.getInstance();
+        database = FirebaseDatabase.getInstance();
 
         types.add("songs");
         types.add("dance");
@@ -98,6 +106,9 @@ public class Create_event_first_Activity extends AppCompatActivity {
                 editor.putString("event_time", event_time.getText().toString());
                 editor.putString("event_info", event_info.getText().toString());
                 editor.putString("event_contact", event_contact.getText().toString());
+                editor.putString("event_pic",eventpic);
+                editor.putString("event_guide",eventguide);
+
 
 
                 editor.apply();
@@ -125,30 +136,69 @@ public class Create_event_first_Activity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
-                startActivityForResult(intent,32);
+                startActivityForResult(intent,30);
             }
         });
 
     }
-/*
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==32 && resultCode==RESULT_OK) {
+            if (data.getData() != null) {
 
-        if(data.getData()!= null){
+                Uri imguri1 = data.getData();
+                event_pic.setImageURI(imguri1);
 
-            Uri imguri1 = data.getData();
-            event_pic.setImageURI(imguri1);
+                final StorageReference ref = storage.getReference().child("event").child(auth.getCurrentUser().getUid()).child(event_name.getText().toString()).child("event_pic");
+                ref.putFile(imguri1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                eventpic = uri.toString();
+                                Toast.makeText(Create_event_first_Activity.this, "IMAGE SUCESSFULLY ADDED", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Create_event_first_Activity.this, "IMAGE NOT ADDED", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
 
-            final StorageReference ref = storage.getReference().child("event").child(auth.getCurrentUser().getUid()).child(event_name.getText().toString());
-            ref.putFile(imguri1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    database.getReference().child("my created event").child(auth.getCurrentUser().getUid()).child(event_name.getText().toString())
-                            .child("event_pic").setValue(storage.getReference().child("User").child(auth.getCurrentUser().getUid()).getFile(imguri1).toString());
-                }
-            });
-
+            }
         }
-    }*/
+        if(requestCode==30 && resultCode == RESULT_OK) {
+            if (data.getData() != null) {
+
+                Uri imguri2 = data.getData();
+                event_map.setImageURI(imguri2);
+
+                final StorageReference ref = storage.getReference().child("event").child(auth.getCurrentUser().getUid()).child(event_name.getText().toString()).child("event_map");
+                ref.putFile(imguri2).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                eventguide = uri.toString();
+                                Toast.makeText(Create_event_first_Activity.this,"IMAGE SUCESSFULLY ADDED", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Create_event_first_Activity.this, "IMAGE NOT ADDED", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+            }
+        }
+    }
 }
