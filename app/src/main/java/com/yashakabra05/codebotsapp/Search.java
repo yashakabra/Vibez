@@ -21,6 +21,7 @@ public class Search extends AppCompatActivity {
     HomePage hm;
     final int homeReturn = 1;
     final int favReturn = 2;
+    final int CalendarReturn=3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,8 @@ public class Search extends AppCompatActivity {
                 home.setImageResource(R.drawable.home);
                 favourite.setImageResource(R.drawable.favourite);
                 calendar.setImageResource(R.drawable.calendarc);
-                Intent intentSearch = new Intent(Search.this, Favourite.class);
-                startActivity(intentSearch);
+                Intent intentSearch = new Intent(Search.this, Calendar.class);
+                startActivityForResult(intentSearch,CalendarReturn);
             }
         });
         names = new ArrayList<String>();
@@ -118,6 +119,11 @@ public class Search extends AppCompatActivity {
                 if (resultCode == RESULT_CANCELED)
                     search.setImageResource(R.drawable.searchc);
                 favourite.setImageResource(R.drawable.favourite);
+                break;
+            case CalendarReturn:
+                if (resultCode == RESULT_CANCELED)
+                    search.setImageResource(R.drawable.searchc);
+                calendar.setImageResource(R.drawable.calendar);
                 break;
         }
     }

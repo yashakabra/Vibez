@@ -25,7 +25,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
     final int searchReturn=2;
     final int favReturn=3;
 
-
+final int calendarReturn=4;
 
 
 
@@ -89,6 +89,8 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 home.setImageResource(R.drawable.home);
                 favourite.setImageResource(R.drawable.favourite);
                 calendar.setImageResource(R.drawable.calendarc);
+                Intent calendarActivity=new Intent(HomePage.this,Calendar.class);
+                startActivityForResult(calendarActivity,calendarReturn);
             }
         });
         rv=findViewById(R.id.recyclerview1);
@@ -245,6 +247,10 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
             case favReturn:if(resultCode==RESULT_CANCELED)
                 home.setImageResource(R.drawable.homec);
                 favourite.setImageResource(R.drawable.favourite);
+                break;
+            case calendarReturn:if(resultCode==RESULT_CANCELED)
+                home.setImageResource(R.drawable.homec);
+                calendar.setImageResource(R.drawable.calendar);
                 break;
         }
     }

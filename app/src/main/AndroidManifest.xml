@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Codebotsapp">
-        <activity android:name=".Search"></activity>
+        <activity android:name=".Calendar"></activity>
+        <activity android:name=".Search" />
         <activity android:name=".awy" />
         <activity android:name=".HomePage" />
         <activity android:name=".EventCalled" />
