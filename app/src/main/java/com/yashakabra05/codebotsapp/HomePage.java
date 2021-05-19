@@ -1,6 +1,7 @@
 package com.yashakabra05.codebotsapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,10 @@ import java.util.ArrayList;
 public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2 {
     ImageView home,search,favourite,calendar;
     final int filt=1;
+    final int searchReturn=2;
+    final int favReturn=3;
+
+
 
 
 
@@ -56,7 +61,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 favourite.setImageResource(R.drawable.favourite);
                 calendar.setImageResource(R.drawable.calendar);
                 Intent intentSearch=new Intent(HomePage.this,Search.class);
-                startActivity(intentSearch);
+                startActivityForResult(intentSearch,searchReturn);
             }
         });
         favourite.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +78,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
             args.putSerializable("ARRAYLIST",favourites);
             intent.putExtra("BUNDLE",args);*/
 
-                startActivity(intent);
+                startActivityForResult(intent,favReturn);
 
             }
         });
@@ -130,7 +135,9 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
         rv2.setLayoutManager(layoutmanager2);
 
 
-    }
+        }
+
+
 
 
 
@@ -170,7 +177,12 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
 
     @Override
     public void onItemSelectedEvent(int index) {
-        Favourite.items.add(list2.get(index));
+        SharedPreferences.Editor editor=getSharedPreferences(Favourite.favouriteDataStore,MODE_PRIVATE).edit();
+
+        editor.putString(list2.get(index).getEventName(),list2.get(index).getEventName());
+        editor.commit();
+       // i++;
+     //  Favourite.items.add(list2.get(index));
 
 //favourites.add(list2.get(i));
 
@@ -181,8 +193,12 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String type;
-        if(requestCode==filt)
+        switch(requestCode)
         {
+
+
+            case filt:
+
             if(resultCode==RESULT_OK)
             {
                 list11.clear();
@@ -221,6 +237,15 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
             {
                 Toast.makeText(this, "yod did not filter you choice!", Toast.LENGTH_SHORT).show();
             }
+            break;
+           case searchReturn:if(resultCode==RESULT_CANCELED)
+                home.setImageResource(R.drawable.homec);
+                search.setImageResource(R.drawable.search);
+                break;
+            case favReturn:if(resultCode==RESULT_CANCELED)
+                home.setImageResource(R.drawable.homec);
+                favourite.setImageResource(R.drawable.favourite);
+                break;
         }
     }
 
