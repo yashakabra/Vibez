@@ -23,6 +23,7 @@ public class Create_event_sec_Activity extends AppCompatActivity {
     Button event_sub,btn_pay;
     FirebaseAuth auth;
     FirebaseDatabase database;
+    String event_fav = "F";
     int price=0, noofticket=0, feeproY, feeproN;
     String total;
 
@@ -99,23 +100,19 @@ public class Create_event_sec_Activity extends AppCompatActivity {
                 String event_pic = getshared.getString("event_pic","not known");//here add default pics
                 String event_guide = getshared.getString("event_guide","not known");
 
-                event_details event = new event_details(event_name, event_date, event_time, event_type, event_info,
-                        event_tprice.getText().toString(), event_ticket.getText().toString(), event_location, event_contact, event_pro.getText().toString());
+                Images event = new Images(event_date,event_fav,event_name, event_pro.getText().toString(), event_type, event_info, event_location,
+                         event_contact,event_tprice.getText().toString(), event_ticket.getText().toString(),event_time);
                 event.setEvent_pic(event_pic);
                 event.setGuide_pic(event_guide);
 
 
                 database.getReference().child("my created events").child(auth.getCurrentUser().getUid()).push().setValue(event);
                 database.getReference().child("events").push().setValue(event);
-                Intent intent = new Intent(Create_event_sec_Activity.this, Manage_eventActivity.class);
+                Intent intent = new Intent(Create_event_sec_Activity.this, HomePage.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-
-
-
 
     }
 }

@@ -16,11 +16,12 @@ public class event_details {
     private String location;
     private String manager_num;
     private String event_pro;
+    private  String event_fav;
 
 
 
 
-    public event_details(String event_name, String date, String time, String event_type, String event_pic, String guide_pic, String info, String t_cost, String t_num, String location, String manager_num) {
+    public event_details(String event_name, String date, String time, String event_type, String event_pic, String guide_pic, String info, String t_cost, String t_num, String location, String manager_num, String event_fav) {
         this.event_name = event_name;
         this.date = date;
         this.time = time;
@@ -32,6 +33,7 @@ public class event_details {
         this.t_num = t_num;
         this.location = location;
         this.manager_num = manager_num;
+        this.event_fav = event_fav;
     }
 
     public String getEvent_pro() {

@@ -2,13 +2,14 @@ package com.yashakabra05.codebotsapp;
 
 public class Images {
 
-    String date,event_name,event_pic,event_pro,event_type,guide_pic,info,location,manager_num,t_cost,t_num,time;
+    String date,event_name,event_pic,event_pro,event_type,guide_pic,info,location,manager_num,t_cost,t_num,time,event_fav = "f";
 
     public Images() {
     }
 
-    public Images(String date, String event_name, String event_pic, String event_pro, String event_type, String guide_pic, String info, String location, String manager_num, String t_cost, String t_num, String time) {
+    public Images(String date,String event_fav, String event_name, String event_pic, String event_pro, String event_type, String guide_pic, String info, String location, String manager_num, String t_cost, String t_num, String time) {
         this.date = date;
+        this.event_fav = event_fav;
         this.event_name = event_name;
         this.event_pic = event_pic;
         this.event_pro = event_pro;
@@ -20,6 +21,30 @@ public class Images {
         this.t_cost = t_cost;
         this.t_num = t_num;
         this.time = time;
+
+    }
+
+    public Images(String date, String event_fav, String event_name, String event_pro, String event_type, String info, String location, String manager_num, String t_cost, String t_num,String time) {
+        this.date = date;
+        this.event_fav = event_fav;
+        this.event_name = event_name;
+        this.event_pro = event_pro;
+        this.event_type = event_type;
+        this.info = info;
+        this.location = location;
+        this.manager_num = manager_num;
+        this.t_cost = t_cost;
+        this.t_num = t_num;
+        this.time = time;
+        ;
+    }
+
+    public String getEvent_fav() {
+        return event_fav;
+    }
+
+    public void setEvent_fav(String event_fav) {
+        this.event_fav = event_fav;
     }
 
     public String getEvent_pic() {

@@ -26,13 +26,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected ,PersonAdapter2.ItemSelected2 {
-//
+public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2  {
+//,PersonAdapter2.ItemSelected2
 
     ImageView home,search,favourite,calendar;
     final int filt=1;
     final int searchReturn=2;
     final int favReturn=3;
+    final int calendarReturn=4;
+
 
     public static ArrayList<Images> list;
     ArrayList<Images> list1,list11;
@@ -42,7 +44,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
     ListView lv;
     RecyclerView.Adapter myadapter,myadapter2;
     RecyclerView.LayoutManager layoutmanager,layoutmanager2;
-    Intent intent,intentEventCalled;
+    Intent intent;//intentEventCalled;
 
     public  static ArrayList<String> song,comedy,dance,sports;
     @Override
@@ -62,7 +64,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
 
         //lv=findViewById(R.id.lv;
         home.setImageResource(R.drawable.homec);
-        intentEventCalled=new Intent(HomePage.this,com.yashakabra05.codebotsapp.EventInformation.class);
+        //intentEventCalled=new Intent(HomePage.this,com.yashakabra05.codebotsapp.EventInformation.class);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +104,8 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 home.setImageResource(R.drawable.home);
                 favourite.setImageResource(R.drawable.favourite);
                 calendar.setImageResource(R.drawable.calendarc);
+                Intent calendarActivity=new Intent(HomePage.this,Calendar.class);
+                startActivityForResult(calendarActivity,calendarReturn);
             }
         });
 
@@ -193,7 +197,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
 
         return super.onOptionsItemSelected(item);
     }
-
+/*
     @Override
     public void onItemImage(int index) {
         intentEventCalled.putExtra("name of event",list2.get(index).getEvent_name());
@@ -210,7 +214,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
      //  Favourite.items.add(list2.get(index));
 
 //favourites.add(list2.get(i));
-    }
+    }*/
 
     @Override       //this below programme is for filter!!
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -228,11 +232,11 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 list22.clear();
 
                 type=data.getStringExtra("cateogary");
-                for(int i=0;i<list1.size();i++)
+                for(int i=0;i<list.size();i++)
                 {
-                    if((list1.get(i).getEvent_type().equals(type)))
+                    if((list.get(i).getEvent_type().equals(type)))
                     {
-                        list11.add(list1.get(i));
+                        list11.add(list.get(i));
                     }
                 }
                 for(int i=0;i<list2.size();i++)
@@ -248,7 +252,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 rv.setAdapter(myadapter);
 
                 myadapter2.notifyDataSetChanged();
-                myadapter2=new PersonAdapter2(this,list22);
+                myadapter2=new PersonAdapter2(this,list11);
                 rv2.setAdapter(myadapter2);
 
             }

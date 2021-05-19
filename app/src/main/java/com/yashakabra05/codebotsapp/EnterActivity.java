@@ -57,11 +57,20 @@ public class EnterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferences getshared = getSharedPreferences("data", Context.MODE_PRIVATE);
+
                 String name = getshared.getString("name","not known");
                 String email = getshared.getString("email", "not known");
                 String uid = auth.getCurrentUser().getUid();
-                String location = etlocation3.getText().toString();
-                String phone = etphone3.getText().toString();
+                final String location = etlocation3.getText().toString();
+                final String phone = etphone3.getText().toString();
+
+                SharedPreferences sp = getSharedPreferences("profile",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("name",name);
+                editor.putString("email",email);
+                editor.putString("location",location);
+                editor.putString("tel",phone);
+                editor.apply();
 
                 Users users = new Users(name, email, uid, location, phone);
                 database.getReference().child("users").child(auth.getCurrentUser().getUid()).setValue(users);

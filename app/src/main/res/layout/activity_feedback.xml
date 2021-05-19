@@ -59,7 +59,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/iv_terrible"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -67,7 +67,7 @@
                     app:srcCompat="@drawable/mood_bad" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/iv_okay"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -75,7 +75,7 @@
                     app:srcCompat="@drawable/mood_bad_2" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/iv_excellent"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -140,7 +140,7 @@
                 app:cardUseCompatPadding="false">
 
                 <EditText
-                    android:id="@+id/textView18"
+                    android:id="@+id/tv_feedback"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_marginStart="20dp"
@@ -155,6 +155,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
+                android:id="@+id/btn_submit_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"

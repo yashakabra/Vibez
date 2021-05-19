@@ -89,7 +89,7 @@
                 android:background="@color/black" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -100,7 +100,7 @@
                 android:background="@color/btn_bg_color_help"/>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_enterevent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
@@ -110,7 +110,7 @@
                 android:background="@color/btn_bg_color_help"/>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btn_buyticket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"

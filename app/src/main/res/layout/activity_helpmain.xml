@@ -202,7 +202,7 @@ We also provide assistance to event managers by helping them in creating an even
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/editTextTextPersonName2"
+                            android:id="@+id/et_doubt"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -216,7 +216,7 @@ We also provide assistance to event managers by helping them in creating an even
                             android:inputType="textPersonName" />
 
                         <Button
-                            android:id="@+id/button"
+                            android:id="@+id/btn_submit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="3dp"

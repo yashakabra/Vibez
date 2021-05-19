@@ -7,18 +7,27 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
-import java.util.Calendar;
+
+import static com.yashakabra05.codebotsapp.HomePage.list;
 
 public class Favourite extends AppCompatActivity {
 ListView lv;
     final int homeReturn = 1;
     final int searchReturn = 2;
-    public static final String favouriteDataStore="favouriteDataStore";
-  public static  ArrayList<Images> items=new ArrayList<Images>();
+    final int calendarReturn = 3;
+    //public static final String favouriteDataStore="favouriteDataStore";
+    ArrayList<Images> items=new ArrayList<Images>();
     ImageView home,search,favourite,calendar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,7 @@ ListView lv;
         favourite=findViewById(R.id.ivFavourite);
         calendar=findViewById(R.id.ivCalendar);
         favourite.setImageResource(R.drawable.favouritec);
+        /*
         items.clear();
         SharedPreferences prefrences=getSharedPreferences(favouriteDataStore,MODE_PRIVATE);
         for(int i=0;i<HomePage.list.size();i++)
@@ -37,11 +47,13 @@ ListView lv;
         String nameOfEvent=prefrences.getString(HomePage.list.get(i).getEvent_name(),null);
         if(nameOfEvent!=null)
         {
-
                     items.add(HomePage.list.get(i));
-                }
+        }
 
         }
+         myadapter.notifyDataSetChanged();
+            myadapter2.notifyDataSetChanged();
+        */
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,15 +86,37 @@ ListView lv;
                 favourite.setImageResource(R.drawable.favourite);
                 calendar.setImageResource(R.drawable.calendarc);
                 Intent intentSearch=new Intent(Favourite.this, Calendar.class);
-                startActivity(intentSearch);
+                startActivityForResult(intentSearch,calendarReturn);
             }
         });
 
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("my favs");
 
+        ref.addValueEventListener(new ValueEventListener() {
+                                      @Override
+                                      public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-        FavouriteCustom adapter=new FavouriteCustom(this, items);
+                                          items.clear();
+                                          for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                                              Images d = snapshot1.getValue(Images.class);
+                                              items.add(d);
+                                              }
+                                          }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+                                      });
+
+            FavouriteCustom adapter=new FavouriteCustom(this, items);
         lv.setAdapter(adapter);
     }
+
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

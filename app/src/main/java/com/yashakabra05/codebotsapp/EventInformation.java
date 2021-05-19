@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.yashakabra05.codebotsapp.Class.event_details;
 
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class EventInformation  extends AppCompatActivity  {
 
      TextView name,date,time,info,t_cost,tvlocation;
      ImageView ivimage, ivlocation;
+     Button btn_buyticket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,17 @@ public class EventInformation  extends AppCompatActivity  {
         ivimage = findViewById(R.id.ivimage);
         tvlocation = findViewById(R.id.tvlocation);
         ivlocation = findViewById(R.id.ivlocation);
+        btn_buyticket = findViewById(R.id.btn_buyticket);
+
+        name.setText(getIntent().getStringExtra("event_name"));
+        date.setText(getIntent().getStringExtra("event_date"));
+        time.setText(getIntent().getStringExtra("event_time"));
+        info.setText(getIntent().getStringExtra("event_info"));
+        t_cost.setText(getIntent().getStringExtra("event_tcost"));
+       // iv.setText(getIntent().getStringExtra("event_image"));
+        Picasso.get().load(getIntent().getStringExtra("event_pic")).placeholder(R.mipmap.ic_event).into(ivimage);
+        tvlocation.setText(getIntent().getStringExtra("event_location"));
+
 
     /*    ed.add(new event_details("MUSIC CONCERT","12/05/2021","5.00 PM","We present you here an event management cum assistance app which not only provides a\n" +
                 "hassle free environment to the event manager to manage his event\n" +
@@ -60,6 +74,14 @@ public class EventInformation  extends AppCompatActivity  {
             }
         });
 
+        btn_buyticket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(EventInformation.this,com.yashakabra05.codebotsapp.Calendar.class);
+                it.putExtra("nameofevent",name.getText().toString());
+                startActivity(it);
+            }
+        });
 
 
     }
