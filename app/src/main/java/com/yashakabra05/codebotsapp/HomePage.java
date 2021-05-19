@@ -25,8 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2 {
-
+public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected ,PersonAdapter2.ItemSelected2 {
+//
 
     ImageView home,search,favourite,calendar;
     final int filt=1;

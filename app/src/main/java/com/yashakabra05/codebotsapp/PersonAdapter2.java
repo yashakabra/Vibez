@@ -1,6 +1,7 @@
 package com.yashakabra05.codebotsapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,13 +51,15 @@ vector.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
         vector.setImageResource(R.drawable.ic_baseline_favorite_24);
         activity.onItemSelectedEvent(event2.indexOf(v.getTag()));
+
     }
 
 });
 ivEventPhoto.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        activity.onItemImage(event2.indexOf(v.getTag()));
+       activity.onItemImage(event2.indexOf(v.getTag()));
+
     }
 });
            /* itemView.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +92,7 @@ ivEventPhoto.setOnClickListener(new View.OnClickListener() {
         //Glide.with(getA).load("https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Fyc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80").placeholder(R.drawable.event2).into(holder.ivEventPhoto);
         Picasso.get().load(event2.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(holder.ivEventPhoto);
         //event2.get(position).getEvent_pic()
-        
+
 
 
     }
