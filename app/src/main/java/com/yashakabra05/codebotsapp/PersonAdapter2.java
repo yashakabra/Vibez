@@ -61,6 +61,16 @@ public class PersonAdapter2 extends RecyclerView.Adapter<PersonAdapter2.ViewHold
             tvName= itemView.findViewById(R.id.tvName);
             tvDate= itemView.findViewById(R.id.tvDate);
             tvPrice=itemView.findViewById(R.id.tvPrice);
+            vector.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    vector.setImageResource(R.drawable.ic_baseline_favorite_24);
+                    Favourite.items.add(HomePage.list.get(HomePage.list.indexOf(vector.getTag())));
+
+                    Favourite.editor.putString(HomePage.list.get(HomePage.list.indexOf(vector.getTag())).getEvent_name(),HomePage.list.get(HomePage.list.indexOf(vector.getTag())).getEvent_name());
+                    Favourite.editor.commit();
+                }
+            });
 
         }
     }
@@ -126,6 +136,7 @@ public class PersonAdapter2 extends RecyclerView.Adapter<PersonAdapter2.ViewHold
                     holder.vector.setImageResource(R.drawable.favourite);
                 }
             });
+
         }
     }
 

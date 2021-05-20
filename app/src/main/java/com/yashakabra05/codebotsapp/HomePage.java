@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -50,7 +49,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
         search=findViewById(R.id.ivSearch);
         favourite=findViewById(R.id.ivFavourite);
         calendar=findViewById(R.id.ivCalendar);
-
+        Favourite.editor = getSharedPreferences(Favourite.favouriteDataStore, MODE_PRIVATE).edit();
         rv2=findViewById(R.id.recyclerview2);
         rv2.setHasFixedSize(true);
 

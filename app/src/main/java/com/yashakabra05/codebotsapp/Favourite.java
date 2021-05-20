@@ -22,17 +22,18 @@ import java.util.ArrayList;
 import static com.yashakabra05.codebotsapp.HomePage.list;
 
 public class Favourite extends AppCompatActivity {
-
+    public static  SharedPreferences.Editor editor;
+    public static final String favouriteDataStore="favouriteData";
     final int homeReturn = 1;
     final int searchReturn = 2;
     final int calendarReturn = 3;
 
     ListView lv;
 
-    public static final String favouriteDataStore="favouriteDataStore";
+
 
     public static  ArrayList<Images> items=new ArrayList<Images>();
-
+    ArrayList<Images> items2=new ArrayList<Images>();
     ImageView home,search,favourite,calendar;
 
     @Override
@@ -45,7 +46,16 @@ public class Favourite extends AppCompatActivity {
         favourite=findViewById(R.id.ivFavourite);
         calendar=findViewById(R.id.ivCalendar);
         favourite.setImageResource(R.drawable.favouritec);
+        SharedPreferences prefrences=getSharedPreferences(favouriteDataStore, MODE_PRIVATE);
+        for(int i=0;i<HomePage.list.size();i++)
+        {
+            String nameOfEvent=prefrences.getString(HomePage.list.get(i).getEvent_name(),null);
+            if(nameOfEvent!=null)
+            {
+                items2.add(HomePage.list.get(i));
+            }
 
+        }
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +94,7 @@ public class Favourite extends AppCompatActivity {
             }
         });
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("my favs");
+       /* DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("my favs");
 
         ref.addValueEventListener(new ValueEventListener() {
                                       @Override
@@ -101,9 +111,9 @@ public class Favourite extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-                                      });
+                                      });*/
 
-            FavouriteCustom adapter=new FavouriteCustom(this, items);
+            FavouriteCustom adapter=new FavouriteCustom(this, items2);
         lv.setAdapter(adapter);
     }
 
