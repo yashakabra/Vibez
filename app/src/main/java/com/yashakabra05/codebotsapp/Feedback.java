@@ -64,6 +64,5 @@ public class Feedback extends AppCompatActivity {
                 startActivity(new Intent(Feedback.this,com.yashakabra05.codebotsapp.HomePage.class));
             }
         });
-
     }
 }

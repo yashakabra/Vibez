@@ -22,15 +22,19 @@ import java.util.ArrayList;
 import static com.yashakabra05.codebotsapp.HomePage.list;
 
 public class Favourite extends AppCompatActivity {
-ListView lv;
+
     final int homeReturn = 1;
     final int searchReturn = 2;
     final int calendarReturn = 3;
 
+    ListView lv;
+
     public static final String favouriteDataStore="favouriteDataStore";
-  public static  ArrayList<Images> items=new ArrayList<Images>();
-    //public static final String favouriteDataStore="favouriteDataStore";
+
+    public static  ArrayList<Images> items=new ArrayList<Images>();
+
     ImageView home,search,favourite,calendar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,21 +45,7 @@ ListView lv;
         favourite=findViewById(R.id.ivFavourite);
         calendar=findViewById(R.id.ivCalendar);
         favourite.setImageResource(R.drawable.favouritec);
-        /*
-        items.clear();
-        SharedPreferences prefrences=getSharedPreferences(favouriteDataStore,MODE_PRIVATE);
-        for(int i=0;i<HomePage.list.size();i++)
-        {
-        String nameOfEvent=prefrences.getString(HomePage.list.get(i).getEvent_name(),null);
-        if(nameOfEvent!=null)
-        {
-                    items.add(HomePage.list.get(i));
-        }
 
-        }
-         myadapter.notifyDataSetChanged();
-            myadapter2.notifyDataSetChanged();
-        */
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +57,7 @@ ListView lv;
                 startActivityForResult(intentSearch,homeReturn);
             }
         });
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +71,7 @@ ListView lv;
 
             }
         });
+
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,15 +101,11 @@ ListView lv;
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-
                                       });
 
             FavouriteCustom adapter=new FavouriteCustom(this, items);
         lv.setAdapter(adapter);
     }
-
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

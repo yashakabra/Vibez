@@ -26,6 +26,7 @@ import java.util.ArrayList;
 public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2  {
 
     ImageView home,search,favourite,calendar;
+
     //For using Home bar
     final int filt=1;
     final int searchReturn=2;
@@ -38,6 +39,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
     RecyclerView rv,rv2;
     RecyclerView.Adapter myadapter,myadapter2;
     RecyclerView.LayoutManager layoutmanager,layoutmanager2;
+
     Intent intent;
 
     @Override

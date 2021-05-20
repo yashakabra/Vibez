@@ -16,10 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class CalendarCustomClass extends ArrayAdapter<Images> {
+
     ArrayList<Images> calendarElements;
-    Context context;
+
     TextView tvName,tvDate,tvTime;
+
+    Context context;
+
     Button btn_enterevent;
+
     CalendarCustomClass(Context context,ArrayList<Images> calendarElements)
     {
         super(context,R.layout.calendar_particular_element,calendarElements);
@@ -27,28 +32,10 @@ public class CalendarCustomClass extends ArrayAdapter<Images> {
         this.calendarElements=calendarElements;
     }
 
-  /* public class ViewHolder
-    {
-        public ViewHolder(@NonNull View v) {
-            super();
-            tvName=v.findViewById(R.id.tvNameCalendar);
-            tvDate=v.findViewById(R.id.tvDateOfEvent);
-            tvTime=v.findViewById(R.id.tvTimeOfEvent);
-            btn_enterevent = v.findViewById(R.id.btn_enterevent);
-            tvName.setText();
-            btn_enterevent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-        }
-    }*/
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.calendar_particular_element, parent, false);
         tvName=v.findViewById(R.id.tvNameCalendar);
@@ -57,7 +44,6 @@ public class CalendarCustomClass extends ArrayAdapter<Images> {
         tvName.setText(calendarElements.get(position).getEvent_name());
         tvDate.setText(calendarElements.get(position).getDate());
         tvTime.setText(calendarElements.get(position).getTime());
-
 
         return v;
     }

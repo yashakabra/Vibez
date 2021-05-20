@@ -14,16 +14,21 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class Calendar extends AppCompatActivity {
-    ListView lv;
-    ArrayList<Images> elementsInCalendar=new ArrayList<Images>();
-    ImageView home,search,favourite,calendar;
+
     final int homeReturn = 1;
     final int favReturn = 2;
     final int searchReturn=3;
+
+    ListView lv;
+    ArrayList<Images> elementsInCalendar=new ArrayList<Images>();
+    ImageView home,search,favourite,calendar;
+
     SharedPreferences preferences;
     final String file_name="Calendar";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         lv=findViewById(R.id.lvCalendar);
@@ -39,13 +44,13 @@ public class Calendar extends AppCompatActivity {
         if (eventname != null) {
 
             for (int t = 0; t < HomePage.list.size(); t++) {
+
                 if (HomePage.list.get(t).getEvent_name().equals(eventname)) {
+
                     SharedPreferences.Editor editor=getSharedPreferences(file_name,MODE_PRIVATE).edit();
 
                     editor.putString(eventname,eventname);
                     editor.commit();
-
-
                 }
 
             }
@@ -54,9 +59,12 @@ public class Calendar extends AppCompatActivity {
         load();
         CalendarCustomClass  cc=new CalendarCustomClass(this,elementsInCalendar);
         lv.setAdapter(cc);
+
         home.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
                 search.setImageResource(R.drawable.search);
                 home.setImageResource(R.drawable.homec);
                 favourite.setImageResource(R.drawable.favourite);
@@ -65,9 +73,12 @@ public class Calendar extends AppCompatActivity {
                 startActivityForResult(intentSearch,homeReturn);
             }
         });
+
         favourite.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
                 search.setImageResource(R.drawable.search);
                 home.setImageResource(R.drawable.home);
                 favourite.setImageResource(R.drawable.favouritec);
@@ -75,12 +86,14 @@ public class Calendar extends AppCompatActivity {
 
                 Intent intentSearch = new Intent(Calendar.this, Favourite.class);
                 startActivityForResult(intentSearch,favReturn);
-
             }
         });
+
         search.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
                 search.setImageResource(R.drawable.search);
                 home.setImageResource(R.drawable.home);
                 favourite.setImageResource(R.drawable.favourite);
@@ -89,25 +102,15 @@ public class Calendar extends AppCompatActivity {
                 startActivityForResult(intentSearch,searchReturn);
             }
         });
-
-     /*   String eventname = getIntent().getStringExtra("nameofevent");
-        for(int t=0;t<HomePage.list.size();t++)
-        {
-            if(HomePage.list.get(t).getEvent_name().equals(eventname))
-            {
-                elementsInCalendar.add(HomePage.list.get(t));
-            }
-
-        }*/
-
-        //elementsInCalendar.add(new Images("lucknow","eid","11112001","500","song","img1","yes"));//this was for demo dont use it
-
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
+
             case homeReturn:
                 if (resultCode == RESULT_CANCELED)
                     home.setImageResource(R.drawable.home);
@@ -125,6 +128,7 @@ public class Calendar extends AppCompatActivity {
                 break;
         }
     }
+
     public   void load()
     {
         elementsInCalendar.clear();

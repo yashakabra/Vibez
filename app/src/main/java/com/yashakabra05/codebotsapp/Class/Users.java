@@ -1,5 +1,7 @@
 package com.yashakabra05.codebotsapp.Class;
 
+//class for storing user details
+
 public class Users {
 
     String name, email, uid, location, phone;

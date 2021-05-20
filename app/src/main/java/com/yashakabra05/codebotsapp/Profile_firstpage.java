@@ -26,13 +26,14 @@ import static com.yashakabra05.codebotsapp.R.layout.activity_profile_firstpage;
 public class Profile_firstpage extends AppCompatActivity {
 
     ImageView iv_profileimage;
+
     TextView tv_profilename, tv_profiletel, tv_profileemail, tv_profilecity;
+
     Button btn_logout;
-    ArrayList<Users> user = new ArrayList<>();
-    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(activity_profile_firstpage);
 
@@ -43,31 +44,6 @@ public class Profile_firstpage extends AppCompatActivity {
        tv_profileemail = findViewById(R.id.et_profileemail);
        btn_logout = findViewById(R.id.btn_logout);
 
-       /*
-       auth = FirebaseAuth.getInstance();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                user.clear();
-                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-
-                    Users users = snapshot1.getValue(Users.class);
-                    if( users.equals(auth.getCurrentUser().getUid())) {
-                        user.add(users);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        */
         SharedPreferences sp2 = getSharedPreferences("profile",MODE_PRIVATE);
 
         tv_profilename.setText(sp2.getString("name","NP"));
@@ -76,8 +52,10 @@ public class Profile_firstpage extends AppCompatActivity {
         tv_profileemail.setText(sp2.getString("email","NP"));
 
        btn_logout.setOnClickListener(new View.OnClickListener() {
+
            @Override
            public void onClick(View v) {
+
                FirebaseAuth.getInstance().signOut();
                Intent it = new Intent(Profile_firstpage.this,com.yashakabra05.codebotsapp.LoginActivity.class);
                startActivity(it);

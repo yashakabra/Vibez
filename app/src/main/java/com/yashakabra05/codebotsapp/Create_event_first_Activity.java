@@ -41,14 +41,21 @@ import static java.security.AccessController.getContext;
 public class Create_event_first_Activity extends AppCompatActivity {
 
     EditText event_name, event_location, event_date, event_time, event_info, event_contact;
+
+    ArrayList<String> types = new ArrayList<String>();
+
+    String eventpic,eventguide;
+
     AutoCompleteTextView event_type;
+
     ImageView event_map, event_pic;
+
     Button btnnextsec;
+
     FirebaseDatabase database;
     FirebaseAuth auth;
     FirebaseStorage storage;
-    ArrayList<String> types = new ArrayList<String>();
-    String eventpic,eventguide;
+
 
 
     @Override
@@ -66,6 +73,7 @@ public class Create_event_first_Activity extends AppCompatActivity {
         event_map = findViewById(R.id.event_map);
         event_pic = findViewById(R.id.event_pic);
         btnnextsec = findViewById(R.id.btnnextsec);
+
         auth = FirebaseAuth.getInstance();
         storage  = FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -79,22 +87,13 @@ public class Create_event_first_Activity extends AppCompatActivity {
         types.add("dance");
 
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.search_autocomplete_element,types);
+
         event_type.setThreshold(0);
         event_type.setAdapter(adapter);
 
-
-       /* event_location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PlacePicker.IntentBuilder;
-            }
-        });
-
-        */
         btnnextsec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 SharedPreferences shrd = getSharedPreferences("manager", MODE_PRIVATE);
                 SharedPreferences.Editor editor = shrd.edit();
@@ -109,15 +108,11 @@ public class Create_event_first_Activity extends AppCompatActivity {
                 editor.putString("event_pic",eventpic);
                 editor.putString("event_guide",eventguide);
 
-//  Images event = new Images(event_date,event_name, event_pro.getText().toString(), event_type, event_info, event_location,
-                //        event_contact,event_tprice.getText().toString(), event_ticket.getText().toString(),event_time,event_fav);
-
                 editor.apply();
 
                 Intent intent = new Intent(Create_event_first_Activity.this, Create_event_sec_Activity.class);
                 startActivity(intent);
                 finish();
-
             }
         });
 
@@ -140,7 +135,6 @@ public class Create_event_first_Activity extends AppCompatActivity {
                 startActivityForResult(intent,30);
             }
         });
-
     }
 
     @Override
@@ -173,7 +167,9 @@ public class Create_event_first_Activity extends AppCompatActivity {
 
             }
         }
+
         if(requestCode==30 && resultCode == RESULT_OK) {
+
             if (data.getData() != null) {
 
                 Uri imguri2 = data.getData();
@@ -197,8 +193,6 @@ public class Create_event_first_Activity extends AppCompatActivity {
                         Toast.makeText(Create_event_first_Activity.this, "IMAGE NOT ADDED", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
             }
         }
     }

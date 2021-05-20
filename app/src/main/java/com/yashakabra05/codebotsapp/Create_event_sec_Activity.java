@@ -16,16 +16,16 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Create_event_sec_Activity extends AppCompatActivity {
 
-    EditText  event_tprice, event_pro;
-    EditText event_ticket;
-    TextView event_fee,total_cost,tv_pay;
+    EditText  event_tprice, event_pro, event_ticket;
+
+    TextView total_cost,tv_pay;
+
     Button event_sub,btn_pay;
+
+    String total, event_fav = "F";
+
     FirebaseAuth auth;
     FirebaseDatabase database;
-    String event_fav = "F";
-    int price=0, noofticket=0, feeproY, feeproN;
-    String total;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,44 +44,28 @@ public class Create_event_sec_Activity extends AppCompatActivity {
         btn_pay.setVisibility(View.GONE);
         total_cost.setVisibility(View.GONE);
 
-        if(event_pro.getText().toString().equals("yes"))
-        {
-            total = "3000rs";
-        }
-        else
-        {
-            total = "2000rs";
-        }
-
-        total_cost.setText(total);
-
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
 
- /*       if (event_ticket != null || event_tprice != null){
-        price = Integer.valueOf(event_tprice.getText().toString());
-        noofticket = Integer.valueOf((event_ticket.getText().toString()));
-        feeproY = (int)( price*noofticket*(0.1));
-        feeproN =(int) (price*noofticket*(0.12));
-
-
-       if (event_pro.getText().toString().equals("Y")){
-
-            event_fee.setText(Integer.toString(feeproY));
-        }
-
-        if (event_pro.getText().toString().equals("N")){
-            event_fee.setText(Integer.toString(feeproN));
-        }
-        }
-**/
         event_sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if(event_pro.getText().toString().equals("yes"))
+                {
+                    total = "3000rs";
+                }
+                else
+                {
+                    total = "2000rs";
+                }
+
+                total_cost.setText(total);
+
                 tv_pay.setVisibility(View.VISIBLE);
                 btn_pay.setVisibility(View.VISIBLE);
                 total_cost.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -104,9 +88,9 @@ public class Create_event_sec_Activity extends AppCompatActivity {
                 event.setEvent_pic(event_pic);
                 event.setGuide_pic(event_guide);
 
-
                 database.getReference().child("my created events").child(auth.getCurrentUser().getUid()).push().setValue(event);
                 database.getReference().child("events").push().setValue(event);
+
                 Intent intent = new Intent(Create_event_sec_Activity.this, HomePage.class);
                 startActivity(intent);
                 finish();

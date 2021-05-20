@@ -18,19 +18,24 @@ import java.util.ArrayList;
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder>
 {
     ArrayList<Images> events;
+
     Context context;
     ItemSelected activity;
+
+    //created interface for adapter and home page
+
     public interface ItemSelected
     {
 
     }
+
     public PersonAdapter(Context context,ArrayList<Images> list)
     {
         activity=(ItemSelected)context;
         events=list;
     }
-    public class ViewHolder extends RecyclerView.ViewHolder
 
+    public class ViewHolder extends RecyclerView.ViewHolder
     {
         ImageView iv;
         TextView tv;
@@ -46,7 +51,6 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
                 }
             });
-
         }
     }
 
@@ -61,7 +65,6 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.itemView.setTag(events.get(position));
         Picasso.get().load(events.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(holder.iv);
-        //Glide.with(context).load(events.get(position).getEvent_pic()).placeholder(R.drawable.event2).into(holder.iv);
     }
 
     @Override
