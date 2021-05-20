@@ -166,7 +166,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 break;
             case R.id.profile:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Profile_firstpage.class));
                 break;
-            case R.id.Help:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Helpmain.class));
+            case R.id.help:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Helpmain.class));
                 break;
             case R.id.ContactUs:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.contactus.class));
                 break;
@@ -174,6 +174,8 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 break;
             case R.id.event:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Create_event_first_Activity.class));
                 break;
+            case R.id.myevents:startActivity(new Intent(HomePage.this,com.yashakabra05.codebotsapp.MyEventsList.class));
+            break;
         }
 
         return super.onOptionsItemSelected(item);

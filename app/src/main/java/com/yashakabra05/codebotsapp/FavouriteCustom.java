@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class FavouriteCustom extends ArrayAdapter<Images> {
@@ -42,7 +44,7 @@ public class FavouriteCustom extends ArrayAdapter<Images> {
         tvDate=v.findViewById(R.id.tvDateList);
         tvName.setText(values.get(position).getEvent_name());
         tvDate.setText(values.get(position).getDate());
-        iv.setImageResource(R.drawable.speech);
+        Picasso.get().load(values.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(iv);
 
         return v;
     }

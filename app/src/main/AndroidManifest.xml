@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Codebotsapp">
-        <activity android:name=".Calendar"></activity>
+        <activity android:name=".MyEventsList"></activity>
+        <activity android:name=".Calendar" />
         <activity android:name=".Search" />
         <activity android:name=".Helpmain" />
         <activity android:name=".HomePage" />
@@ -28,7 +29,7 @@
             android:name=".MainActivity"
             tools:ignore="DuplicateActivity" />
         <activity android:name=".Create_event_sec_Activity" />
-        <activity android:name=".Create_event_first_Activity"></activity>
+        <activity android:name=".Create_event_first_Activity" />
         <activity android:name=".CreateActivity" />
         <activity
             android:name=".MainActivity"
