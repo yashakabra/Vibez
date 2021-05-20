@@ -15,14 +15,10 @@
         <activity android:name=".Calendar"></activity>
         <activity android:name=".Search" />
         <activity android:name=".Helpmain" />
-        <activity android:name=".awy" />
         <activity android:name=".HomePage" />
-        <activity android:name=".EventCalled" />
         <activity android:name=".Favourite" />
-        <activity android:name=".event" />
         <activity android:name=".Feedback" />
         <activity android:name=".contactus" />
-        <activity android:name=".Profile" />
         <activity android:name=".Filter" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Profile_secondpage" />
@@ -31,11 +27,8 @@
         <activity
             android:name=".MainActivity"
             tools:ignore="DuplicateActivity" />
-        <activity android:name=".Event_in_detailActivity" />
-        <activity android:name=".Manager_on_event_Activity" />
         <activity android:name=".Create_event_sec_Activity" />
         <activity android:name=".Create_event_first_Activity"></activity>
-        <activity android:name=".Manage_eventActivity" />
         <activity android:name=".CreateActivity" />
         <activity
             android:name=".MainActivity"

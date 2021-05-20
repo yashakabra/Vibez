@@ -11,13 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.yashakabra05.codebotsapp.Class.event_details;
 
 import java.util.ArrayList;
 
 public class EventInformation  extends AppCompatActivity  {
 
-    ArrayList<event_details> ed = new ArrayList<>();
+
 
      TextView name,date,time,info,t_cost,tvlocation;
      ImageView ivimage, ivlocation;
@@ -69,8 +68,8 @@ public class EventInformation  extends AppCompatActivity  {
         ivlocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentb = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + tvlocation));
-                startActivity(intentb);
+                Intent intentb = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + tvlocation.getText().toString()));
+                startActivity(intentb);;
             }
         });
 

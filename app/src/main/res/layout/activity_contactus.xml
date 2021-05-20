@@ -93,7 +93,7 @@
                             android:id="@+id/textView19"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="NAME-"
+                            android:text="NAME- YASH A KABRA"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                             android:id="@+id/number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="CONTACT NO.-"
+                            android:text="CONTACT NO.- 7300915379"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -109,7 +109,7 @@
                             android:id="@+id/email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="EMAIL-"
+                            android:text="EMAIL- yashakabra05@gmail.com"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -159,7 +159,7 @@
                             android:id="@+id/photo2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="NAME-"
+                            android:text="NAME-KRISHNA JALAN"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -167,7 +167,7 @@
                             android:id="@+id/number2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="CONTACT NO.-"
+                            android:text="CONTACT NO.-9660293749"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -175,7 +175,7 @@
                             android:id="@+id/email2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="EMAIL-"
+                            android:text="EMAIL-krishna.20204237@mnnit.ac.in"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -224,7 +224,7 @@
                             android:id="@+id/name3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="NAME-"
+                            android:text="NAME-ANUJ PANDEY"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -232,7 +232,7 @@
                             android:id="@+id/number3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="CONTACT NO.-"
+                            android:text="CONTACT NO.-9129953788"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -240,7 +240,7 @@
                             android:id="@+id/email3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="EMAIL-"
+                            android:text="EMAIL-anuj.20205037@mnnit.ac.in"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -289,7 +289,7 @@
                             android:id="@+id/name4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="NAME-"
+                            android:text="NAME-HARSH ASNANI"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -297,7 +297,7 @@
                             android:id="@+id/number4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="CONTACT NO.-"
+                            android:text="CONTACT NO.-8871188209"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -305,7 +305,7 @@
                             android:id="@+id/email4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="EMAIL-"
+                            android:text="EMAIL-harsh.20205072@mnnit.ac.in"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>

@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,12 +14,14 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class Calendar extends AppCompatActivity {
-ListView lv;
+    ListView lv;
     ArrayList<Images> elementsInCalendar=new ArrayList<Images>();
     ImageView home,search,favourite,calendar;
     final int homeReturn = 1;
     final int favReturn = 2;
     final int searchReturn=3;
+    SharedPreferences preferences;
+    final String file_name="Calendar";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,28 @@ ListView lv;
         favourite=findViewById(R.id.ivFavourite);
         calendar=findViewById(R.id.ivCalendar);
         calendar.setImageResource(R.drawable.calendarc);
+
+        load();
+        String eventname = getIntent().getStringExtra("nameofevent");
+
+        if (eventname != null) {
+
+            for (int t = 0; t < HomePage.list.size(); t++) {
+                if (HomePage.list.get(t).getEvent_name().equals(eventname)) {
+                    SharedPreferences.Editor editor=getSharedPreferences(file_name,MODE_PRIVATE).edit();
+
+                    editor.putString(eventname,eventname);
+                    editor.commit();
+
+
+                }
+
+            }
+        }
+
+        load();
+        CalendarCustomClass  cc=new CalendarCustomClass(this,elementsInCalendar);
+        lv.setAdapter(cc);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,20 +89,19 @@ ListView lv;
                 startActivityForResult(intentSearch,searchReturn);
             }
         });
-        elementsInCalendar=new ArrayList<Images>();
-        String eventname = getIntent().getStringExtra("nameofevent");
+
+     /*   String eventname = getIntent().getStringExtra("nameofevent");
         for(int t=0;t<HomePage.list.size();t++)
         {
             if(HomePage.list.get(t).getEvent_name().equals(eventname))
             {
                 elementsInCalendar.add(HomePage.list.get(t));
             }
-            else{continue;}
-        }
+
+        }*/
 
         //elementsInCalendar.add(new Images("lucknow","eid","11112001","500","song","img1","yes"));//this was for demo dont use it
-        CalendarCustomClass cc=new CalendarCustomClass(this,elementsInCalendar);
-        lv.setAdapter(cc);
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -101,4 +125,19 @@ ListView lv;
                 break;
         }
     }
+    public   void load()
+    {
+        elementsInCalendar.clear();
+        preferences=getSharedPreferences(file_name,MODE_PRIVATE);
+        for(int i=0;i<HomePage.list.size();i++)
+        {
+            String nameOfEvent=preferences.getString(HomePage.list.get(i).getEvent_name(),null);
+            if(nameOfEvent!=null)
+            {
+                elementsInCalendar.add(HomePage.list.get(i));
+            }
+
+        }
+    }
+
 }

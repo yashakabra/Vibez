@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/profile"
         android:title="Profile"
-        android:orderInCategory="1"
+        android:orderInCategory="5"
         app:showAsAction="never"
         />
     <item android:id="@+id/Help"
         android:title="Help"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         app:showAsAction="never"/>
     <item android:id="@+id/ContactUs"
-        android:title="Contact Us"
-        android:orderInCategory="1"
+        android:title="About Us"
+        android:orderInCategory="4"
         app:showAsAction="never"/>
     <item android:id="@+id/feedback"
         android:title="Feedback"
-        android:orderInCategory="1"
+        android:orderInCategory="3"
         app:showAsAction="never"/>
     <item
         android:id="@+id/event"

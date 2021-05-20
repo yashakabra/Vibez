@@ -26,7 +26,8 @@ public class CalendarCustomClass extends ArrayAdapter<Images> {
         this.context=context;
         this.calendarElements=calendarElements;
     }
-    public class ViewHolder
+
+  /* public class ViewHolder
     {
         public ViewHolder(@NonNull View v) {
             super();
@@ -34,6 +35,7 @@ public class CalendarCustomClass extends ArrayAdapter<Images> {
             tvDate=v.findViewById(R.id.tvDateOfEvent);
             tvTime=v.findViewById(R.id.tvTimeOfEvent);
             btn_enterevent = v.findViewById(R.id.btn_enterevent);
+            tvName.setText();
             btn_enterevent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -42,8 +44,9 @@ public class CalendarCustomClass extends ArrayAdapter<Images> {
             });
 
         }
-    }
+    }*/
 
+    @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -51,9 +54,11 @@ public class CalendarCustomClass extends ArrayAdapter<Images> {
         tvName=v.findViewById(R.id.tvNameCalendar);
         tvDate=v.findViewById(R.id.tvDateOfEvent);
         tvTime=v.findViewById(R.id.tvTimeOfEvent);
+        tvName.setText(calendarElements.get(position).getEvent_name());
+        tvDate.setText(calendarElements.get(position).getDate());
+        tvTime.setText(calendarElements.get(position).getTime());
 
 
         return v;
     }
-
 }

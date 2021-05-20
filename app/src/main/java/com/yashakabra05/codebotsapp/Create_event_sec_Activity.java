@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.yashakabra05.codebotsapp.Class.event_details;
 
 public class Create_event_sec_Activity extends AppCompatActivity {
 

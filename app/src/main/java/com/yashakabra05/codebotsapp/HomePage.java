@@ -24,28 +24,22 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2  {
-//,PersonAdapter2.ItemSelected2
 
     ImageView home,search,favourite,calendar;
+    //For using Home bar
     final int filt=1;
     final int searchReturn=2;
     final int favReturn=3;
-
-final int calendarReturn=4;
-
-
+    final int calendarReturn=4;
 
     public static ArrayList<Images> list;
-    ArrayList<Images> list1,list11;
-    ArrayList<Images> list2,list22;
-    ArrayList<Images> favourites;
+    ArrayList<Images> list1,list11,list2,list22,favourites;
+
     RecyclerView rv,rv2;
-    ListView lv;
     RecyclerView.Adapter myadapter,myadapter2;
     RecyclerView.LayoutManager layoutmanager,layoutmanager2;
-    Intent intent;//intentEventCalled;
+    Intent intent;
 
-    public  static ArrayList<String> song,comedy,dance,sports;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +55,7 @@ final int calendarReturn=4;
         rv=findViewById(R.id.recyclerview1);
         rv.setHasFixedSize(true);
 
-        //lv=findViewById(R.id.lv;
         home.setImageResource(R.drawable.homec);
-        //intentEventCalled=new Intent(HomePage.this,com.yashakabra05.codebotsapp.EventInformation.class);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +64,7 @@ final int calendarReturn=4;
                 home.setImageResource(R.drawable.home);
                 favourite.setImageResource(R.drawable.favourite);
                 calendar.setImageResource(R.drawable.calendar);
+
                 Intent intentSearch=new Intent(HomePage.this,Search.class);
                 startActivityForResult(intentSearch,searchReturn);
             }
@@ -86,11 +79,6 @@ final int calendarReturn=4;
                 calendar.setImageResource(R.drawable.calendar);
 
                 intent=new Intent(HomePage.this,com.yashakabra05.codebotsapp.Favourite.class);
-                //startActivity(intent);
-           /* Bundle args=new Bundle();
-            args.putSerializable("ARRAYLIST",favourites);
-            intent.putExtra("BUNDLE",args);*/
-
                 startActivityForResult(intent,favReturn);
 
             }
@@ -103,20 +91,19 @@ final int calendarReturn=4;
                 home.setImageResource(R.drawable.home);
                 favourite.setImageResource(R.drawable.favourite);
                 calendar.setImageResource(R.drawable.calendarc);
+
                 Intent calendarActivity=new Intent(HomePage.this,Calendar.class);
                 startActivityForResult(calendarActivity,calendarReturn);
             }
         });
 
+        list=new ArrayList<Images>();       //for all events in home page
+        list1=new ArrayList<Images>();      //for all popular events
+        list11=new ArrayList<Images>();     //filter for all events in home page
+        list22=new ArrayList<Images>();     //filter for popular events
+        favourites=new ArrayList<Images>(); //for all favorite events
 
-
-
-        String s="delhi";
-        list=new ArrayList<Images>();
-        list1=new ArrayList<Images>();      //for popular events
-        list2=new ArrayList<Images>();      //
-        list11=new ArrayList<Images>();
-        list22=new ArrayList<Images>();
+        //refrencing our data from firebase and adding to our array list
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("events");
 
@@ -143,16 +130,8 @@ final int calendarReturn=4;
             }
         });
 
-        favourites=new ArrayList<Images>();
-        /*
-        for(int i=0;i<list.size();i++)
-        {
-                if(list.get(i).getEvent_pro().equals("yes"))
-                {
-                    list1.add(list.get(i));
-                }
-        }
-         */
+        // setting adapters for home feed and popular events
+
         myadapter2=new PersonAdapter2(HomePage.this,list);
         rv2.setAdapter(myadapter2);
 
@@ -167,13 +146,15 @@ final int calendarReturn=4;
         rv2.setLayoutManager(layoutmanager2);
     }
 
-
+    //connects action bar to home page
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+    //on clicking elements of action bar the following intents are called-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -196,33 +177,15 @@ final int calendarReturn=4;
 
         return super.onOptionsItemSelected(item);
     }
-/*
-    @Override
-    public void onItemImage(int index) {
-        intentEventCalled.putExtra("name of event",list2.get(index).getEvent_name());
-        startActivity(intentEventCalled);
-    }
+
+    // this is the result for the intent called for filter
 
     @Override
-    public void onItemSelectedEvent(int index) {
-        SharedPreferences.Editor editor=getSharedPreferences(Favourite.favouriteDataStore,MODE_PRIVATE).edit();
-
-        editor.putString(list2.get(index).getEvent_name(),list2.get(index).getEvent_name());
-        editor.commit();
-       // i++;
-     //  Favourite.items.add(list2.get(index));
-
-//favourites.add(list2.get(i));
-    }*/
-
-    @Override       //this below programme is for filter!!
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String type;
         switch(requestCode)
         {
-
-
             case filt:
 
             if(resultCode==RESULT_OK)
