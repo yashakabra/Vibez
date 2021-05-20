@@ -1,6 +1,7 @@
 package com.yashakabra05.codebotsapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,13 +45,6 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
             super(itemView);
             iv= itemView.findViewById(R.id.iv);
             tv= itemView.findViewById(R.id.tv);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
         }
     }
 
@@ -65,6 +59,20 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.itemView.setTag(events.get(position));
         Picasso.get().load(events.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(holder.iv);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent((Context) activity,EventInformation.class);
+                it.putExtra("event_pic",events.get(position).getEvent_pic());
+                it.putExtra("event_name",events.get(position).getEvent_name());
+                it.putExtra("event_date",events.get(position).getDate());
+                it.putExtra("event_time",events.get(position).getTime());
+                it.putExtra("event_info",events.get(position).getInfo());
+                it.putExtra("event_location",events.get(position).getLocation());
+                it.putExtra("event_tcost",events.get(position).getT_cost());
+                ((Context) activity).startActivity(it);
+            }
+        });
     }
 
     @Override

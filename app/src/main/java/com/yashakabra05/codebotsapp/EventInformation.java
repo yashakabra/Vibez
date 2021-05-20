@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-
 public class EventInformation  extends AppCompatActivity  {
 
      TextView name,date,time,info,t_cost,tvlocation;
@@ -35,7 +33,7 @@ public class EventInformation  extends AppCompatActivity  {
         ivimage = findViewById(R.id.ivimage);
         tvlocation = findViewById(R.id.tvlocation);
         ivlocation = findViewById(R.id.ivlocation);
-        btn_buyticket = findViewById(R.id.btn_buyticket);
+        btn_buyticket = findViewById(R.id.btn_queries);
 
         name.setText(getIntent().getStringExtra("event_name"));
         date.setText(getIntent().getStringExtra("event_date"));

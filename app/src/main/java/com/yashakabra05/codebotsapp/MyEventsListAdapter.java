@@ -1,6 +1,7 @@
 package com.yashakabra05.codebotsapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,16 @@ public class MyEventsListAdapter extends RecyclerView.Adapter<MyEventsListAdapte
 
     ArrayList<Images> my_event_list;
 
+    Itemselec activity;
+
+    public interface Itemselec
+    {
+
+    }
+
     public MyEventsListAdapter(Context context, ArrayList<Images> list) {
         super();
+        activity = (Itemselec) context;
         my_event_list = list;
     }
 
@@ -34,13 +43,6 @@ public class MyEventsListAdapter extends RecyclerView.Adapter<MyEventsListAdapte
             tv_event_name = itemView.findViewById(R.id.tv_event_name);
             tv_event_date = itemView.findViewById(R.id.tv_event_date);
             tv_nrtickets = itemView.findViewById(R.id.tv_nrtickets);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
         }
     }
 
@@ -57,6 +59,15 @@ public class MyEventsListAdapter extends RecyclerView.Adapter<MyEventsListAdapte
             holder.tv_event_name.setText(my_event_list.get(position).getEvent_name());
             Picasso.get().load(my_event_list.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(holder.iv_event_image);
             holder.tv_event_date.setText(my_event_list.get(position).getDate());
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        Intent it = new Intent((Context)activity,MyParticularEvent.class);
+                        it.putExtra("event name",my_event_list.get(position).getEvent_name());
+                    ((Context) activity).startActivity(it);
+                }
+            });
     }
 
     @Override

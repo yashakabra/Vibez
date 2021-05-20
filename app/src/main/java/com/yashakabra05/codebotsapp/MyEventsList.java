@@ -25,7 +25,7 @@ public class MyEventsList extends AppCompatActivity {
 
     FirebaseAuth auth;
 
-    ArrayList<Images> event_list = new ArrayList<>();
+    ArrayList<Images> event_list = new ArrayList<Images>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Codebotsapp">
-        <activity android:name=".MyEventsList"></activity>
+        <activity android:name=".EmergencyTab"></activity>
+        <activity android:name=".MyParticularEvent" />
+        <activity android:name=".MyEventsList" />
         <activity android:name=".Calendar" />
         <activity android:name=".Search" />
         <activity android:name=".Helpmain" />

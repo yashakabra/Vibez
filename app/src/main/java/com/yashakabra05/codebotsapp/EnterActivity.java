@@ -71,7 +71,7 @@ public class EnterActivity extends AppCompatActivity {
                 editor.putString("tel",phone);
                 editor.apply();
 
-                Users users = new Users(name, email, uid, location, phone);
+                Users users = new Users(email,location,name,phone,uid);
                 database.getReference().child("users").child(auth.getCurrentUser().getUid()).setValue(users);
 
                 Intent i = new Intent(EnterActivity.this, MainActivity.class);

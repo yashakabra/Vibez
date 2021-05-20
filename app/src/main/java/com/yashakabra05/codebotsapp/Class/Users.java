@@ -4,22 +4,17 @@ package com.yashakabra05.codebotsapp.Class;
 
 public class Users {
 
-    String name, email, uid, location, phone;
+    String email,location,name,phone,uid;
 
-    public Users(String name, String email, String uid, String location, String phone) {
-        this.name = name;
+    public Users() {
+    }
+
+    public Users(String email, String location, String name, String phone, String uid) {
         this.email = email;
-        this.uid = uid;
         this.location = location;
-        this.phone = phone;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
+        this.phone = phone;
+        this.uid = uid;
     }
 
     public String getEmail() {
@@ -30,14 +25,6 @@ public class Users {
         this.email = email;
     }
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
     public String getLocation() {
         return location;
     }
@@ -46,11 +33,27 @@ public class Users {
         this.location = location;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
