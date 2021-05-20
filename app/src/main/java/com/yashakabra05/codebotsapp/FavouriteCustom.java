@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.yashakabra05.codebotsapp.Class.Images;
+
 import java.util.ArrayList;
 
 public class FavouriteCustom extends ArrayAdapter<Images> {

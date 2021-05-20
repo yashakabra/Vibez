@@ -7,19 +7,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.yashakabra05.codebotsapp.Class.Images;
 
 import java.util.ArrayList;
-
-import static com.yashakabra05.codebotsapp.HomePage.list;
 
 public class Favourite extends AppCompatActivity {
     public static  SharedPreferences.Editor editor;

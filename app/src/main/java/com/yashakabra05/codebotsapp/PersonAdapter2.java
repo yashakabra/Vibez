@@ -2,7 +2,6 @@ package com.yashakabra05.codebotsapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+import com.yashakabra05.codebotsapp.Class.Images;
 
 import java.util.ArrayList;
-
-import static android.content.Context.MODE_PRIVATE;
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
 
 public class PersonAdapter2 extends RecyclerView.Adapter<PersonAdapter2.ViewHolder>
 {

@@ -1,4 +1,4 @@
-package com.yashakabra05.codebotsapp;
+package com.yashakabra05.codebotsapp.Class;
 
 public class Images {
 

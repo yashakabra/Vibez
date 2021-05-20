@@ -12,7 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Codebotsapp">
-        <activity android:name=".Calendar"></activity>
+        <activity android:name=".ManangerQuery">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AskQuery" />
+        <activity android:name=".enter_in_event" />
+        <activity android:name=".Calendar" />
         <activity android:name=".Search" />
         <activity android:name=".Helpmain" />
         <activity android:name=".HomePage" />
@@ -28,7 +37,7 @@
             android:name=".MainActivity"
             tools:ignore="DuplicateActivity" />
         <activity android:name=".Create_event_sec_Activity" />
-        <activity android:name=".Create_event_first_Activity"></activity>
+        <activity android:name=".Create_event_first_Activity" />
         <activity android:name=".CreateActivity" />
         <activity
             android:name=".MainActivity"
@@ -38,11 +47,7 @@
             tools:ignore="DuplicateActivity" />
         <activity android:name=".EnterActivity" />
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
