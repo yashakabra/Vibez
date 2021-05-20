@@ -41,13 +41,15 @@ public class LoginActivity extends AppCompatActivity {
         database= FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        if (etemail1.getText().toString().isEmpty() || etpswd1.getText().toString().isEmpty()){
-            Toast.makeText(LoginActivity.this, "Fill all details", Toast.LENGTH_SHORT).show();
-        }
+
 
         btnsignin1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (etemail1.getText().toString().isEmpty() || etpswd1.getText().toString().isEmpty()){
+                    Toast.makeText(LoginActivity.this, "Fill all details", Toast.LENGTH_SHORT).show();
+                }
+
                 auth.signInWithEmailAndPassword(etemail1.getText().toString(),etpswd1.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
