@@ -1,12 +1,10 @@
 package com.yashakabra05.codebotsapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -17,16 +15,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
-public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2 {
+public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2  {
+//,PersonAdapter2.ItemSelected2
+
     ImageView home,search,favourite,calendar;
     final int filt=1;
     final int searchReturn=2;
     final int favReturn=3;
 
 final int calendarReturn=4;
-
 
 
 
@@ -38,7 +43,7 @@ final int calendarReturn=4;
     ListView lv;
     RecyclerView.Adapter myadapter,myadapter2;
     RecyclerView.LayoutManager layoutmanager,layoutmanager2;
-    Intent intent,intentEventCalled;
+    Intent intent;//intentEventCalled;
 
     public  static ArrayList<String> song,comedy,dance,sports;
     @Override
@@ -50,9 +55,16 @@ final int calendarReturn=4;
         favourite=findViewById(R.id.ivFavourite);
         calendar=findViewById(R.id.ivCalendar);
 
+        rv2=findViewById(R.id.recyclerview2);
+        rv2.setHasFixedSize(true);
+
+        rv=findViewById(R.id.recyclerview1);
+        rv.setHasFixedSize(true);
+
         //lv=findViewById(R.id.lv;
         home.setImageResource(R.drawable.homec);
-        intentEventCalled=new Intent(HomePage.this,com.yashakabra05.codebotsapp.EventCalled.class);
+        //intentEventCalled=new Intent(HomePage.this,com.yashakabra05.codebotsapp.EventInformation.class);
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +76,7 @@ final int calendarReturn=4;
                 startActivityForResult(intentSearch,searchReturn);
             }
         });
+
         favourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +95,7 @@ final int calendarReturn=4;
 
             }
         });
+
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,53 +107,65 @@ final int calendarReturn=4;
                 startActivityForResult(calendarActivity,calendarReturn);
             }
         });
-        rv=findViewById(R.id.recyclerview1);
-        rv.setHasFixedSize(true);
+
+
+
+
         String s="delhi";
         list=new ArrayList<Images>();
-        list1=new ArrayList<Images>();
-        list2=new ArrayList<Images>();
+        list1=new ArrayList<Images>();      //for popular events
+        list2=new ArrayList<Images>();      //
         list11=new ArrayList<Images>();
         list22=new ArrayList<Images>();
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("events");
+
+        ref.addValueEventListener(new ValueEventListener() {
+                                      @Override
+                                      public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                          list.clear();
+                                          for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                                              Images d = snapshot1.getValue(Images.class);
+                                              list.add(d);
+                                              if(d.getEvent_pro().equals("yes"))
+                                              {
+                                                  list1.add(d);
+                                              }
+                                          }
+                                          myadapter.notifyDataSetChanged();
+                                          myadapter2.notifyDataSetChanged();
+                                      }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         favourites=new ArrayList<Images>();
-        list.add(new Images("delhi","ganesh chaturthi","11/11/2001","price: 500","song","eve1","yes"));
-        list.add(new Images("delhi","dipawali","11/11/2002","price: 500","dance","eve2","yes"));
-        list.add(new Images("delhi","holi","11/11/2003","price: 500","sports","eve3","yes"));
-        list.add(new Images("delhi","happy new year","11/11/2001","price: 500","song","eve1","yes"));
+        /*
         for(int i=0;i<list.size();i++)
         {
-            if((list.get(i).getCityName().equals(s)))
-            {
-                if(list.get(i).getPopularity().equals("yes"))
+                if(list.get(i).getEvent_pro().equals("yes"))
                 {
                     list1.add(list.get(i));
                 }
-                list2.add(list.get(i));
-
-
-            }
         }
+         */
+        myadapter2=new PersonAdapter2(HomePage.this,list);
+        rv2.setAdapter(myadapter2);
 
         myadapter=new PersonAdapter(this,list1);
         rv.setAdapter(myadapter);
 
-
-
         layoutmanager=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
         rv.setLayoutManager(layoutmanager);
-        rv2=findViewById(R.id.recyclerview2);
-        rv2.setHasFixedSize(true);
 
 
-        myadapter2=new PersonAdapter2(this,list2);
-        rv2.setAdapter(myadapter2);
-        layoutmanager2=new LinearLayoutManager(this);
+        layoutmanager2=new LinearLayoutManager(HomePage.this);
         rv2.setLayoutManager(layoutmanager2);
-
-
-        }
-
-
+    }
 
 
 
@@ -148,6 +174,7 @@ final int calendarReturn=4;
         getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId())
@@ -155,25 +182,24 @@ final int calendarReturn=4;
             case R.id.filter:
                 startActivityForResult(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Filter.class),filt);
                 break;
-            case R.id.profile:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Profile.class));
+            case R.id.profile:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Profile_firstpage.class));
                 break;
-            case R.id.Help:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.help.class));
+            case R.id.Help:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Helpmain.class));
                 break;
             case R.id.ContactUs:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.contactus.class));
                 break;
             case R.id.feedback:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Feedback.class));
                 break;
-            case R.id.event:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.event.class));
+            case R.id.event:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Create_event_first_Activity.class));
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-
+/*
     @Override
     public void onItemImage(int index) {
-        intentEventCalled.putExtra("name of event",list2.get(index).getEventName());
+        intentEventCalled.putExtra("name of event",list2.get(index).getEvent_name());
         startActivity(intentEventCalled);
     }
 
@@ -181,17 +207,15 @@ final int calendarReturn=4;
     public void onItemSelectedEvent(int index) {
         SharedPreferences.Editor editor=getSharedPreferences(Favourite.favouriteDataStore,MODE_PRIVATE).edit();
 
-        editor.putString(list2.get(index).getEventName(),list2.get(index).getEventName());
+        editor.putString(list2.get(index).getEvent_name(),list2.get(index).getEvent_name());
         editor.commit();
        // i++;
      //  Favourite.items.add(list2.get(index));
 
 //favourites.add(list2.get(i));
+    }*/
 
-
-
-    }
-    @Override
+    @Override       //this below programme is for filter!!
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String type;
@@ -209,16 +233,16 @@ final int calendarReturn=4;
                 type=data.getStringExtra("cateogary");
                 for(int i=0;i<list1.size();i++)
                 {
-                    if((list1.get(i).getCateogary().equals(type)))
+                    if((list1.get(i).getEvent_type().equals(type)))
                     {
-                        list11.add(list1.get(i));
+                        list11.add(list.get(i));
                     }
                 }
-                for(int i=0;i<list2.size();i++)
+                for(int i=0;i<list.size();i++)
                 {
-                    if((list2.get(i).getCateogary().equals(type)))
+                    if((list.get(i).getEvent_type().equals(type)))
                     {
-                        list22.add(list2.get(i));
+                        list22.add(list.get(i));
                     }
                 }
                 myadapter.notifyDataSetChanged();
@@ -227,12 +251,8 @@ final int calendarReturn=4;
                 rv.setAdapter(myadapter);
 
                 myadapter2.notifyDataSetChanged();
-                myadapter2=new PersonAdapter2(this,list22);
+                myadapter2=new PersonAdapter2(this,list11);
                 rv2.setAdapter(myadapter2);
-
-
-
-
 
             }
             else if(resultCode==RESULT_CANCELED)

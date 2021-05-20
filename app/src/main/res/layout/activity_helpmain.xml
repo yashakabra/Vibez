@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/blue_light"
     android:orientation="vertical"
     tools:context=".help">
 
@@ -36,20 +36,20 @@
 
 
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:gravity="center_horizontal"
-                    android:text="HELP SERVICE"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:gravity="center_horizontal"
+                        android:text="HELP SERVICE"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                     <View
                         android:id="@+id/divider5"
@@ -202,7 +202,7 @@ We also provide assistance to event managers by helping them in creating an even
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/editTextTextPersonName2"
+                            android:id="@+id/et_doubt"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -216,7 +216,7 @@ We also provide assistance to event managers by helping them in creating an even
                             android:inputType="textPersonName" />
 
                         <Button
-                            android:id="@+id/button"
+                            android:id="@+id/btn_submit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="3dp"

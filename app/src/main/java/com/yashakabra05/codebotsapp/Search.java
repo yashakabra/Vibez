@@ -73,25 +73,56 @@ public class Search extends AppCompatActivity {
         hm = new HomePage();
 
         for (int i = 0; i < HomePage.list.size(); i++) {
-            names.add(HomePage.list.get(i).getEventName());
+            names.add(HomePage.list.get(i).getEvent_name());
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.search_autocomplete_element, names);
         etEventName.setThreshold(1);
         etEventName.setAdapter(adapter);
+
+
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String s = etEventName.getText().toString();
+                int t = 0;
+                for (int i = 0; i < HomePage.list.size(); i++) {
+                    if (s.equals(HomePage.list.get(i).getEvent_name())) {
+                        t = 1;
+                        Intent searchIntent = new Intent(Search.this, EventInformation.class);
+                        searchIntent.putExtra("event_pic", HomePage.list.get(i).getEvent_pic());
+                        searchIntent.putExtra("event_name", HomePage.list.get(i).getEvent_name());
+                        searchIntent.putExtra("event_date", HomePage.list.get(i).getDate());
+                        searchIntent.putExtra("event_time", HomePage.list.get(i).getTime());
+                        searchIntent.putExtra("event_info", HomePage.list.get(i).getInfo());
+                        searchIntent.putExtra("event_location", HomePage.list.get(i).getLocation());
+                        searchIntent.putExtra("event_tcost", HomePage.list.get(i).getT_cost());
+                        startActivity(searchIntent);
+                        break;
+                    }
+                }
+                if(t==0)
+                {
+                    Toast.makeText(hm, "sorry! there is no such event", Toast.LENGTH_SHORT).show();
+                }
+
+                /*
                 if (s.isEmpty()) {
                     Toast.makeText(Search.this, "please enter something first", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else {
                     int count = 0;
                     for (int i = 0; i < HomePage.list.size(); i++) {
-                        if ((HomePage.list.get(i).getEventName()).equals(s)) ;
+                        if ((HomePage.list.get(i).getEvent_name()).equals(s)) ;
                         {
                             count++;
-                            Intent searchIntent = new Intent(Search.this, EventCalled.class);
-                            searchIntent.putExtra("name of event", HomePage.list.get(i).getEventName());
+                            Intent searchIntent = new Intent(Search.this, EventInformation.class);
+                            searchIntent.putExtra("event_pic",HomePage.list.get(i).getEvent_pic());
+                            searchIntent.putExtra("event_name", HomePage.list.get(i).getEvent_name());
+                            searchIntent.putExtra("event_date",HomePage.list.get(i).getDate());
+                            searchIntent.putExtra("event_time",HomePage.list.get(i).getTime());
+                            searchIntent.putExtra("event_info",HomePage.list.get(i).getInfo());
+                            searchIntent.putExtra("event_location",HomePage.list.get(i).getLocation());
+                            searchIntent.putExtra("event_tcost",HomePage.list.get(i).getT_cost());
                             startActivity(searchIntent);
                             break;
 
@@ -100,9 +131,10 @@ public class Search extends AppCompatActivity {
                     if (count == 0) {
                         Toast.makeText(hm, "sorry! there is no such event", Toast.LENGTH_SHORT).show();
                     }
-                }
+
+                }*/
             }
-        });
+            });
     }
 
     @Override

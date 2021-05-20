@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Calendar extends AppCompatActivity {
 ListView lv;
-ArrayList<Images> elementsInCalendar;
+    ArrayList<Images> elementsInCalendar=new ArrayList<Images>();
     ImageView home,search,favourite,calendar;
     final int homeReturn = 1;
     final int favReturn = 2;
@@ -65,6 +65,16 @@ ArrayList<Images> elementsInCalendar;
             }
         });
         elementsInCalendar=new ArrayList<Images>();
+        String eventname = getIntent().getStringExtra("nameofevent");
+        for(int t=0;t<HomePage.list.size();t++)
+        {
+            if(HomePage.list.get(t).getEvent_name().equals(eventname))
+            {
+                elementsInCalendar.add(HomePage.list.get(t));
+            }
+            else{continue;}
+        }
+
         //elementsInCalendar.add(new Images("lucknow","eid","11112001","500","song","img1","yes"));//this was for demo dont use it
         CalendarCustomClass cc=new CalendarCustomClass(this,elementsInCalendar);
         lv.setAdapter(cc);
