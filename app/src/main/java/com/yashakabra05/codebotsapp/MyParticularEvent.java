@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MyParticularEvent extends AppCompatActivity {
+public class MyParticularEvent extends AppCompatActivity implements MyParticularEventAdapter.Itemselec3 {
 
     RecyclerView rv_myparticular_event;
     RecyclerView.Adapter myparticulareventadapter;
@@ -29,7 +29,7 @@ public class MyParticularEvent extends AppCompatActivity {
 
     FirebaseAuth auth;
 
-    private ArrayList<LocationInfo> particular_event_list = new ArrayList<LocationInfo>();
+    public static ArrayList<LocationInfo> particular_event_list = new ArrayList<LocationInfo>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,9 @@ public class MyParticularEvent extends AppCompatActivity {
         btn_queries.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  startActivity(new Intent(MyParticularEvent.this,com.yashakabra05.codebotsapp.));
+              Intent it = new Intent(MyParticularEvent.this,com.yashakabra05.codebotsapp.ManangerQuery.class);
+              it.putExtra("event name",event_name);
+              startActivity(it);
             }
         });
 

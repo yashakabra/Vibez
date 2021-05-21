@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class Calendar extends AppCompatActivity {
+public class Calendar extends AppCompatActivity implements CalendarCustomClass.itemselec5{
 
     final int homeReturn = 1;
     final int favReturn = 2;
@@ -140,7 +140,6 @@ public class Calendar extends AppCompatActivity {
             {
                 elementsInCalendar.add(HomePage.list.get(i));
             }
-
         }
     }
 

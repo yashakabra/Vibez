@@ -32,6 +32,7 @@ public class MyEventsListAdapter extends RecyclerView.Adapter<MyEventsListAdapte
         my_event_list = list;
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         ImageView iv_event_image;

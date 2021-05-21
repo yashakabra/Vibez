@@ -20,9 +20,9 @@ public class MyParticularEventAdapter extends RecyclerView.Adapter<MyParticularE
 
     ArrayList<LocationInfo> my_particular_event_list;
 
-    Itemselec acti;
+    Itemselec3 acti;
 
-    public interface Itemselec
+    public interface Itemselec3
     {
 
     }
@@ -30,6 +30,7 @@ public class MyParticularEventAdapter extends RecyclerView.Adapter<MyParticularE
     public MyParticularEventAdapter(Context context, ArrayList<LocationInfo> list) {
         super();
         my_particular_event_list = list;
+        acti = (Itemselec3) context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder

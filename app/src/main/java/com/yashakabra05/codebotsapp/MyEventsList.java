@@ -17,7 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MyEventsList extends AppCompatActivity {
+public class MyEventsList extends AppCompatActivity implements MyEventsListAdapter.Itemselec {
 
     RecyclerView rv_myevents_list;
     RecyclerView.Adapter MyEventsListAdapter;
@@ -39,6 +39,8 @@ public class MyEventsList extends AppCompatActivity {
 
         auth =  FirebaseAuth.getInstance();
 
+        MyEventsListAdapter = new MyEventsListAdapter(MyEventsList.this,event_list);
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("my created events").child(auth.getCurrentUser().getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -57,7 +59,7 @@ public class MyEventsList extends AppCompatActivity {
             }
         });
 
-        MyEventsListAdapter = new MyEventsListAdapter(this,event_list);
+
         rv_myevents_list.setAdapter(MyEventsListAdapter);
         rv_myevents_list.setLayoutManager(layoutManager);
     }
