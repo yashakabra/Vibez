@@ -253,18 +253,15 @@ public class EnterEventSecondPage extends AppCompatActivity {
                             // for ActivityCompat#requestPermissions for more details.
                             return;
                         }
-                        if (client.getLastLocation() != null) {
-                            client.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-                                @Override
-                                public void onSuccess(Location location) {
+                        client.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
 
+                                longitudefield = String.valueOf(location.getLongitude());
+                                latitudefield = String.valueOf(location.getLatitude());
 
-                                    longitudefield = String.valueOf(location.getLongitude());
-                                    latitudefield = String.valueOf(location.getLatitude());
-
-                                }
-                            });
-                        }
+                            }
+                        });
                     }
 
                     @Override
