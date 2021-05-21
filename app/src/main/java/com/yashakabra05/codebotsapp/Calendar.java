@@ -30,6 +30,7 @@ public class Calendar extends AppCompatActivity implements CalendarCustomClass.i
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_calendar);
         lv=findViewById(R.id.lvCalendar);
         home=findViewById(R.id.ivHome);

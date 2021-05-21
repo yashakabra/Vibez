@@ -31,9 +31,9 @@ import static com.google.firebase.auth.PhoneAuthProvider.getCredential;
 
 public class EnterActivity extends AppCompatActivity {
 
-    EditText etlocation3, etphone3, etotp3;
+    EditText etlocation3, etphone3;
 
-    Button btntest3;
+    Button btnenter3;
 
     FirebaseAuth auth;
     FirebaseDatabase database;
@@ -48,14 +48,48 @@ public class EnterActivity extends AppCompatActivity {
 
         etlocation3 = findViewById(R.id.etlocation3);
         etphone3 = findViewById(R.id.etphone3);
-        etotp3 = findViewById(R.id.etotp3);
+        btnenter3 = findViewById(R.id.btnenter3);
 
-        btntest3 = findViewById(R.id.btntest3);
+        SharedPreferences getshared = getSharedPreferences("data", Context.MODE_PRIVATE);
+        String name = getshared.getString("name","not known");
+        String email = getshared.getString("email", "not known");
+        String pswd =  getshared.getString("password", "not known");
+        String uid = auth.getCurrentUser().getUid();
+        final String location = etlocation3.getText().toString();
+        final String phone = etphone3.getText().toString();
 
-        btntest3.setOnClickListener(new View.OnClickListener() {
+        btnenter3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences getshared = getSharedPreferences("data", Context.MODE_PRIVATE);
+                auth.signInWithEmailAndPassword(email,pswd ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            if (auth.getCurrentUser().isEmailVerified()) {
+
+                                SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putString("name", name);
+                                editor.putString("email", email);
+                                editor.putString("location", location);
+                                editor.putString("tel", phone);
+                                editor.apply();
+
+                                Users users = new Users(email,location,name,phone,uid);
+                                database.getReference().child("users").child(auth.getCurrentUser().getUid()).setValue(users);
+
+                                Intent i = new Intent(EnterActivity.this, MainActivity.class);
+                                startActivity(i);
+                                finish();
+                            } else
+                                Toast.makeText(EnterActivity.this, "Verify your account first", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(EnterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+             /*   SharedPreferences getshared = getSharedPreferences("data", Context.MODE_PRIVATE);
 
                 String name = getshared.getString("name","not known");
                 String email = getshared.getString("email", "not known");
@@ -77,7 +111,16 @@ public class EnterActivity extends AppCompatActivity {
                 Intent i = new Intent(EnterActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
+
+              */
             }
         });
+
+        if (auth.getCurrentUser().isEmailVerified()){
+            Intent intent = new Intent(EnterActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 }

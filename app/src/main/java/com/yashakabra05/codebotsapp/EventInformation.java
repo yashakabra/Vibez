@@ -1,30 +1,52 @@
 package com.yashakabra05.codebotsapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventInformation  extends AppCompatActivity  {
 
-     TextView name,date,time,info,t_cost,tvlocation;
+    TextView name,date,time,info,t_cost,tvlocation;
 
-     ImageView ivimage, ivlocation;
+    ImageView ivimage, ivlocation;
 
-     Button btn_buyticket;
+    Button btn_buyticket;
+
+    SupportMapFragment fragmentmap;
+    GoogleMap map;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_information);
 
+        fragmentmap = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentmap);
         name = findViewById(R.id.tvname);
         date = findViewById(R.id.tvdate);
         time = findViewById(R.id.tvtime);
@@ -62,5 +84,43 @@ public class EventInformation  extends AppCompatActivity  {
                 startActivity(it);
             }
         });
+
+        String eventlocation = tvlocation.getText().toString();
+
+        // List<Address> addresses;
+        // addresses = null;
+        List<Address>[] addressList = new List[]{new ArrayList<Address>()};
+
+        fragmentmap.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(@NonNull GoogleMap googleMap) {
+                //   mGoogleApiClient.connect();
+                map = googleMap;
+                if(eventlocation!=null || !eventlocation.equals("")){
+                    Geocoder geocoder = new Geocoder(EventInformation.this);
+                    try {
+                        addressList[0] = geocoder.getFromLocationName(eventlocation, 1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Address address = (Address) addressList[0].get(0);
+
+                    double latfield = address.getLatitude();
+                    double longfield = address.getLongitude();
+
+                    //    LatLng latLng = new LatLng(latfield, longfield);
+                    Toast.makeText(EventInformation.this, String.valueOf(latfield), Toast.LENGTH_SHORT).show();
+
+                    map.addMarker(new MarkerOptions().position(new LatLng(latfield, longfield)));
+                    map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latfield, longfield)));
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom((new LatLng(latfield, longfield)), 15.0f));
+
+
+                }
+
+            }
+        });
+
     }
 }

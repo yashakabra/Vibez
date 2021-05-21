@@ -21,7 +21,10 @@
 
         <fragment
             android:layout_width="match_parent"
-            android:layout_height="344dp"></fragment>
+            android:layout_height="300sp"
+            android:id="@+id/victimmap"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
 
         <TextView
             android:id="@+id/tv_person_name"
