@@ -45,48 +45,14 @@
             android:paddingRight="10dp" />
 
         <Button
-            android:id="@+id/btngetotp3"
-            android:layout_width="168dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/etphone3"
-            android:layout_marginStart="90dp"
-            android:layout_marginLeft="90dp"
-            android:layout_marginTop="270dp"
-            android:text="Get otp"
-            app:backgroundTint="@color/black" />
-
-        <EditText
-            android:id="@+id/etotp3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btngetotp3"
-            android:layout_marginTop="330dp"
-            android:ems="10"
-            android:hint="OTP"
-            android:inputType="textPersonName"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
-
-        <Button
-            android:id="@+id/btnverify3"
+            android:id="@+id/btnenter3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/etotp3"
+            android:layout_below="@id/etphone3"
             android:layout_marginStart="250dp"
             android:layout_marginLeft="250dp"
             android:layout_marginTop="390dp"
-            android:text="Verify"
-            app:backgroundTint="@color/black" />
-
-        <Button
-            android:id="@+id/btntest3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnverify3"
-            android:layout_marginStart="57dp"
-            android:layout_marginLeft="57dp"
-            android:layout_marginTop="550dp"
-            android:text="Temporary (without otp)"
+            android:text="Let's Go"
             app:backgroundTint="@color/black" />
 
         <TextView
@@ -108,16 +74,6 @@
             android:layout_marginLeft="130dp"
             android:layout_marginTop="80dp"
             android:background="@color/black" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="470dp"
-            android:text="(OR)"
-            android:textSize="22dp" />
 
     </FrameLayout>
 
