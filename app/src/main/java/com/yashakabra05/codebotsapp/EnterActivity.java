@@ -59,8 +59,7 @@ public class EnterActivity extends AppCompatActivity {
         String email = getshared.getString("email", "not known");
         String pswd =  getshared.getString("password", "not known");
         String uid = auth.getCurrentUser().getUid();
-        final String location = etlocation3.getText().toString();
-        final String phone = etphone3.getText().toString();
+
 
         btnenter3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +69,8 @@ public class EnterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             if (auth.getCurrentUser().isEmailVerified()) {
-
+                                 String location = etlocation3.getText().toString();
+                                 String phone = etphone3.getText().toString();
                                 SharedPreferences sp = getSharedPreferences("profile", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sp.edit();
                                 editor.putString("name", name);

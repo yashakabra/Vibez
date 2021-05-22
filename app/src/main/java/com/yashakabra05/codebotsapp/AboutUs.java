@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class contactus extends AppCompatActivity {
+public class AboutUs extends AppCompatActivity {
 
     private ImageView iv_yash, iv_harsh, iv_anuj, iv_krishna;
 

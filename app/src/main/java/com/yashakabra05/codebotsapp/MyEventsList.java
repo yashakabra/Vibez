@@ -1,12 +1,10 @@
 package com.yashakabra05.codebotsapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.WindowManager;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +24,7 @@ public class MyEventsList extends AppCompatActivity implements MyEventsListAdapt
 
     FirebaseAuth auth;
 
-    ArrayList<Images> event_list = new ArrayList<Images>();
+    ArrayList<Event> event_list = new ArrayList<Event>();
 
 
 
@@ -53,7 +51,7 @@ public class MyEventsList extends AppCompatActivity implements MyEventsListAdapt
             public void onDataChange( DataSnapshot snapshot) {
                 event_list.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    Images d = snapshot1.getValue(Images.class);
+                    Event d = snapshot1.getValue(Event.class);
                     event_list.add(d);
                 }
                 MyEventsListAdapter.notifyDataSetChanged();

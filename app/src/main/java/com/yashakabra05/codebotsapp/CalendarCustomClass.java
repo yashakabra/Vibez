@@ -7,18 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CalendarCustomClass extends ArrayAdapter<Images> {
+public class CalendarCustomClass extends ArrayAdapter<Event> {
 
-    ArrayList<Images> calendarElements;
+    ArrayList<Event> calendarElements;
 
     TextView tvName,tvDate,tvTime;
 
@@ -31,7 +29,7 @@ public class CalendarCustomClass extends ArrayAdapter<Images> {
     public interface itemselec5 {
     }
 
-    CalendarCustomClass(Context context,ArrayList<Images> calendarElements)
+    CalendarCustomClass(Context context,ArrayList<Event> calendarElements)
     {
         super(context,R.layout.calendar_particular_element,calendarElements);
         activi = (itemselec5) context;

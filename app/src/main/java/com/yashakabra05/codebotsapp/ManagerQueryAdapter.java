@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yashakabra05.codebotsapp.Class.UserQuery;
-import com.yashakabra05.codebotsapp.PersonAdapter2;
-import com.yashakabra05.codebotsapp.R;
 
 import java.util.ArrayList;
 

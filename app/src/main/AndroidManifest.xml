@@ -56,13 +56,13 @@
         <activity android:name=".HomePage" />
         <activity android:name=".Favourite" />
         <activity android:name=".Feedback" />
-        <activity android:name=".contactus" />
+        <activity android:name=".AboutUs" />
         <activity android:name=".Filter" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Profile_firstpage" />
+        <activity android:name=".ProfileFirstPage" />
         <activity android:name=".EventInformation" />
         <activity android:name=".Create_event_sec_Activity" />
-        <activity android:name=".Create_event_first_Activity" />
+        <activity android:name=".CreateEventFirstActivity" />
         <activity android:name=".CreateActivity" />
         <activity
             android:name=".MainActivity"

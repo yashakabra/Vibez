@@ -17,15 +17,15 @@ public class Search extends AppCompatActivity {
 
     AutoCompleteTextView etEventName;
 
-    ArrayList<String> names;
+    ArrayList<String> namesOfEvent;
 
-    ImageView home, search, favourite, calendar,iv;
+    ImageView ivHome, ivSearch, ivFavourite, ivCalendar,iv;
 
     HomePage hm= new HomePage();
 
-    final int homeReturn = 1;
-    final int favReturn = 2;
-    final int CalendarReturn=3;
+    final int HOME_RETURN = 1;
+    final int FAV_RETURN = 2;
+    final int CALENDAR_RETURN=3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,64 +35,64 @@ public class Search extends AppCompatActivity {
 
         etEventName = findViewById(R.id.etSearch);
         iv = findViewById(R.id.vcSearch);
-        home = findViewById(R.id.ivHome);
-        search = findViewById(R.id.ivSearch);
-        favourite = findViewById(R.id.ivFavourite);
-        calendar = findViewById(R.id.ivCalendar);
+        ivHome = findViewById(R.id.ivHome);
+        ivSearch = findViewById(R.id.ivSearch);
+        ivFavourite = findViewById(R.id.ivFavourite);
+        ivCalendar = findViewById(R.id.ivCalendar);
 
-        search.setImageResource(R.drawable.searchc);
+        ivSearch.setImageResource(R.drawable.searchc);
 
-        home.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.homec);
-                favourite.setImageResource(R.drawable.favourite);
-                calendar.setImageResource(R.drawable.calendar);
-                Intent intentSearch = new Intent(Search.this, HomePage.class);
-                startActivityForResult(intentSearch,homeReturn);
-            }
-        });
-
-        favourite.setOnClickListener(new View.OnClickListener() {
+        ivHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favouritec);
-                calendar.setImageResource(R.drawable.calendar);
-
-                Intent intentSearch = new Intent(Search.this, Favourite.class);
-                startActivityForResult(intentSearch,favReturn);
+                ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.homec);
+                ivFavourite.setImageResource(R.drawable.favourite);
+                ivCalendar.setImageResource(R.drawable.calendar);
+                Intent intentHome = new Intent(Search.this, HomePage.class);
+                startActivityForResult(intentHome,HOME_RETURN);
             }
         });
 
-        calendar.setOnClickListener(new View.OnClickListener() {
+       ivFavourite.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favourite);
-                calendar.setImageResource(R.drawable.calendarc);
-                Intent intentSearch = new Intent(Search.this, Calendar.class);
-                startActivityForResult(intentSearch,CalendarReturn);
+                ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favouritec);
+                ivCalendar.setImageResource(R.drawable.calendar);
+
+                Intent intentFavourite = new Intent(Search.this, Favourite.class);
+                startActivityForResult(intentFavourite,FAV_RETURN);
             }
         });
 
-        names = new ArrayList<String>();
+        ivCalendar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favourite);
+                ivCalendar.setImageResource(R.drawable.calendarc);
+                Intent intentCalendar= new Intent(Search.this, Calendar.class);
+                startActivityForResult(intentCalendar,CALENDAR_RETURN);
+            }
+        });
+
+        namesOfEvent = new ArrayList<String>();
 
         for (int i = 0; i < HomePage.list.size(); i++) {
 
-            names.add(HomePage.list.get(i).getEvent_name());
+            namesOfEvent.add(HomePage.list.get(i).getEvent_name());
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.search_autocomplete_element, names);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.search_autocomplete_element, namesOfEvent);
         etEventName.setThreshold(1);
         etEventName.setAdapter(adapter);
 
@@ -135,20 +135,20 @@ public class Search extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
-            case homeReturn:
+            case HOME_RETURN:
                 if (resultCode == RESULT_CANCELED)
-                    home.setImageResource(R.drawable.home);
-                search.setImageResource(R.drawable.searchc);
+                    ivHome.setImageResource(R.drawable.home);
+                ivSearch.setImageResource(R.drawable.searchc);
                 break;
-            case favReturn:
+            case FAV_RETURN:
                 if (resultCode == RESULT_CANCELED)
-                    search.setImageResource(R.drawable.searchc);
-                favourite.setImageResource(R.drawable.favourite);
+                    ivSearch.setImageResource(R.drawable.searchc);
+                ivFavourite.setImageResource(R.drawable.favourite);
                 break;
-            case CalendarReturn:
+            case CALENDAR_RETURN:
                 if (resultCode == RESULT_CANCELED)
-                    search.setImageResource(R.drawable.searchc);
-                calendar.setImageResource(R.drawable.calendar);
+                    ivSearch.setImageResource(R.drawable.searchc);
+                ivCalendar.setImageResource(R.drawable.calendar);
                 break;
         }
     }

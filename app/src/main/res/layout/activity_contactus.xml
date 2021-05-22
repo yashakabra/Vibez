@@ -7,7 +7,7 @@
     android:backgroundTint="@color/blue_light"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".contactus">
+    tools:context=".AboutUs">
 
     <FrameLayout
         android:layout_width="match_parent"

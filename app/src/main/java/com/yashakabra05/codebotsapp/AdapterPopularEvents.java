@@ -6,19 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder>
+public class AdapterPopularEvents extends RecyclerView.Adapter<AdapterPopularEvents.ViewHolder>
 {
-    ArrayList<Images> events;
+    ArrayList<Event> events;
 
     Context context;
     ItemSelected activity;
@@ -30,7 +28,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     }
 
-    public PersonAdapter(Context context,ArrayList<Images> list)
+    public AdapterPopularEvents(Context context, ArrayList<Event> list)
     {
         activity=(ItemSelected)context;
         events=list;
@@ -38,12 +36,12 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        ImageView iv;
-        TextView tv;
+        ImageView ivPopularEvents;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            iv= itemView.findViewById(R.id.iv);
+            ivPopularEvents= itemView.findViewById(R.id.iv);
         }
     }
 
@@ -57,7 +55,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.itemView.setTag(events.get(position));
-        Picasso.get().load(events.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(holder.iv);
+        Picasso.get().load(events.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(holder.ivPopularEvents);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

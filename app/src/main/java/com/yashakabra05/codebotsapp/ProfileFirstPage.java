@@ -1,6 +1,5 @@
 package com.yashakabra05.codebotsapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,18 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.yashakabra05.codebotsapp.Class.Users;
-
-import java.util.ArrayList;
 
 import static com.yashakabra05.codebotsapp.R.layout.activity_profile_firstpage;
 
-public class Profile_firstpage extends AppCompatActivity {
+public class ProfileFirstPage extends AppCompatActivity {
 
     ImageView iv_profileimage;
 
@@ -54,7 +45,7 @@ public class Profile_firstpage extends AppCompatActivity {
 
         tv_profilename.setText(sp2.getString("name","NP"));
         tv_profilecity.setText(sp2.getString("location","NP"));
-        tv_profiletel.setText(sp2.getString("phone","NP"));
+        tv_profiletel.setText(sp2.getString("tel","NP"));
         tv_profileemail.setText(sp2.getString("email","NP"));
 
        btn_logout.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +54,7 @@ public class Profile_firstpage extends AppCompatActivity {
            public void onClick(View v) {
 
                FirebaseAuth.getInstance().signOut();
-               Intent it = new Intent(Profile_firstpage.this,com.yashakabra05.codebotsapp.LoginActivity.class);
+               Intent it = new Intent(ProfileFirstPage.this,com.yashakabra05.codebotsapp.LoginActivity.class);
                startActivity(it);
                finish();
            }

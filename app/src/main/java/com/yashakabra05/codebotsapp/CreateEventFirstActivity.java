@@ -4,10 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -19,12 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,13 +25,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 
-import static java.security.AccessController.getContext;
-
-public class Create_event_first_Activity extends AppCompatActivity {
+public class CreateEventFirstActivity extends AppCompatActivity {
 
     private EditText event_name, event_location, event_date, event_time, event_info, event_contact;
 
@@ -116,10 +104,10 @@ public class Create_event_first_Activity extends AppCompatActivity {
 
                 if( event_contact.getText().toString().isEmpty() || event_info.getText().toString().isEmpty() || event_time.getText().toString().isEmpty() ||event_name.getText().toString().isEmpty() || event_type.getText().toString().isEmpty() || event_location.getText().toString().isEmpty() || event_date.getText().toString().isEmpty() )
                 {
-                    Toast.makeText(Create_event_first_Activity.this, "Please enter all fields !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateEventFirstActivity.this, "Please enter all fields !", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                Intent intent = new Intent(Create_event_first_Activity.this, Create_event_sec_Activity.class);
+                Intent intent = new Intent(CreateEventFirstActivity.this, Create_event_sec_Activity.class);
                 startActivity(intent);
                 finish();
                 }
@@ -165,12 +153,12 @@ public class Create_event_first_Activity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 eventpic = uri.toString();
-                                Toast.makeText(Create_event_first_Activity.this, "IMAGE SUCESSFULLY ADDED", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateEventFirstActivity.this, "IMAGE SUCESSFULLY ADDED", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Create_event_first_Activity.this, "IMAGE NOT ADDED", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateEventFirstActivity.this, "IMAGE NOT ADDED", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -194,14 +182,14 @@ public class Create_event_first_Activity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 eventguide = uri.toString();
-                                Toast.makeText(Create_event_first_Activity.this,"IMAGE SUCESSFULLY ADDED", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateEventFirstActivity.this,"IMAGE SUCESSFULLY ADDED", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Create_event_first_Activity.this, "IMAGE NOT ADDED", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateEventFirstActivity.this, "IMAGE NOT ADDED", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

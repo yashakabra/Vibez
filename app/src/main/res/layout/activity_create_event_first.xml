@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/blue_light"
-    tools:context=".Create_event_first_Activity">
+    tools:context=".CreateEventFirstActivity">
 
 
     <ScrollView

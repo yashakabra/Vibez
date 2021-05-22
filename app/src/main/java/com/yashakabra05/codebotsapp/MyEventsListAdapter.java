@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MyEventsListAdapter extends RecyclerView.Adapter<MyEventsListAdapter.ViewHolder> {
 
-    ArrayList<Images> my_event_list;
+    ArrayList<Event> my_event_list;
 
     Itemselec activity;
 
@@ -26,7 +26,7 @@ public class MyEventsListAdapter extends RecyclerView.Adapter<MyEventsListAdapte
 
     }
 
-    public MyEventsListAdapter(Context context, ArrayList<Images> list) {
+    public MyEventsListAdapter(Context context, ArrayList<Event> list) {
         super();
         activity = (Itemselec) context;
         my_event_list = list;

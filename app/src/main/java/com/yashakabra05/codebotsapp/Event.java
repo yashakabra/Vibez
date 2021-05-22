@@ -1,13 +1,13 @@
 package com.yashakabra05.codebotsapp;
 
-public class Images {
+public class Event {
 
     String date,event_name,event_pic,event_pro,event_type,guide_pic,info,location,manager_num,t_cost,t_num,time,event_fav = "f";
 
-    public Images() {
+    public Event() {
     }
 
-    public Images(String date,String event_fav, String event_name, String event_pic, String event_pro, String event_type, String guide_pic, String info, String location, String manager_num, String t_cost, String t_num, String time) {
+    public Event(String date, String event_fav, String event_name, String event_pic, String event_pro, String event_type, String guide_pic, String info, String location, String manager_num, String t_cost, String t_num, String time) {
         this.date = date;
         this.event_fav = event_fav;
         this.event_name = event_name;
@@ -24,7 +24,7 @@ public class Images {
 
     }
 
-    public Images(String date, String event_fav, String event_name, String event_pro, String event_type, String info, String location, String manager_num, String t_cost, String t_num,String time) {
+    public Event(String date, String event_fav, String event_name, String event_pro, String event_type, String info, String location, String manager_num, String t_cost, String t_num, String time) {
         this.date = date;
         this.event_fav = event_fav;
         this.event_name = event_name;

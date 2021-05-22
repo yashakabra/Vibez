@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -16,13 +15,13 @@ import java.util.ArrayList;
 
 public class Calendar extends AppCompatActivity implements CalendarCustomClass.itemselec5{
 
-    final int homeReturn = 1;
-    final int favReturn = 2;
-    final int searchReturn=3;
+    final int HOME_RETURN = 1;
+    final int FAV_RETURN= 2;
+    final int SEARCH_RETURN=3;
 
     ListView lv;
-    ArrayList<Images> elementsInCalendar=new ArrayList<Images>();
-    ImageView home,search,favourite,calendar;
+    ArrayList<Event> elementsInCalendar=new ArrayList<Event>();
+    ImageView ivHome,ivSearch,ivFavourite,ivCalendar;
 
     SharedPreferences preferences;
     final String file_name="Calendar";
@@ -37,11 +36,11 @@ public class Calendar extends AppCompatActivity implements CalendarCustomClass.i
 
         setContentView(R.layout.activity_calendar);
         lv=findViewById(R.id.lvCalendar);
-        home=findViewById(R.id.ivHome);
-        search=findViewById(R.id.ivSearch);
-        favourite=findViewById(R.id.ivFavourite);
-        calendar=findViewById(R.id.ivCalendar);
-        calendar.setImageResource(R.drawable.calendarc);
+        ivHome=findViewById(R.id.ivHome);
+        ivSearch=findViewById(R.id.ivSearch);
+        ivFavourite=findViewById(R.id.ivFavourite);
+        ivCalendar=findViewById(R.id.ivCalendar);
+        ivCalendar.setImageResource(R.drawable.calendarc);
 
         load();
         String eventname = getIntent().getStringExtra("nameofevent");
@@ -65,46 +64,46 @@ public class Calendar extends AppCompatActivity implements CalendarCustomClass.i
         CalendarCustomClass  cc=new CalendarCustomClass(this,elementsInCalendar);
         lv.setAdapter(cc);
 
-        home.setOnClickListener(new View.OnClickListener() {
+        ivHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.homec);
-                favourite.setImageResource(R.drawable.favourite);
-                calendar.setImageResource(R.drawable.calendar);
+                ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.homec);
+                ivFavourite.setImageResource(R.drawable.favourite);
+                ivCalendar.setImageResource(R.drawable.calendar);
                 Intent intentSearch = new Intent(Calendar.this, HomePage.class);
-                startActivityForResult(intentSearch,homeReturn);
+                startActivityForResult(intentSearch,HOME_RETURN);
             }
         });
 
-        favourite.setOnClickListener(new View.OnClickListener() {
+        ivFavourite.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favouritec);
-                calendar.setImageResource(R.drawable.calendar);
+               ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favouritec);
+                ivCalendar.setImageResource(R.drawable.calendar);
 
                 Intent intentSearch = new Intent(Calendar.this, Favourite.class);
-                startActivityForResult(intentSearch,favReturn);
+                startActivityForResult(intentSearch,FAV_RETURN);
             }
         });
 
-        search.setOnClickListener(new View.OnClickListener() {
+        ivSearch.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favourite);
-                calendar.setImageResource(R.drawable.calendarc);
+                ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favourite);
+                ivCalendar.setImageResource(R.drawable.calendarc);
                 Intent intentSearch = new Intent(Calendar.this, Search.class);
-                startActivityForResult(intentSearch,searchReturn);
+                startActivityForResult(intentSearch,SEARCH_RETURN);
             }
         });
     }
@@ -116,20 +115,20 @@ public class Calendar extends AppCompatActivity implements CalendarCustomClass.i
 
         switch (requestCode) {
 
-            case homeReturn:
+            case HOME_RETURN:
                 if (resultCode == RESULT_CANCELED)
-                    home.setImageResource(R.drawable.home);
-                calendar.setImageResource(R.drawable.calendarc);
+                    ivHome.setImageResource(R.drawable.home);
+                ivCalendar.setImageResource(R.drawable.calendarc);
                 break;
-            case favReturn:
+            case FAV_RETURN:
                 if (resultCode == RESULT_CANCELED)
-                    calendar.setImageResource(R.drawable.calendarc);
-                favourite.setImageResource(R.drawable.favourite);
+                    ivCalendar.setImageResource(R.drawable.calendarc);
+                ivFavourite.setImageResource(R.drawable.favourite);
                 break;
-            case searchReturn:
+            case SEARCH_RETURN:
                 if (resultCode == RESULT_CANCELED)
-                    search.setImageResource(R.drawable.search);
-                calendar.setImageResource(R.drawable.calendarc);
+                    ivSearch.setImageResource(R.drawable.search);
+                ivCalendar.setImageResource(R.drawable.calendarc);
                 break;
         }
     }

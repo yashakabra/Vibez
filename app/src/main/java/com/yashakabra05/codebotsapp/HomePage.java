@@ -23,24 +23,24 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSelected,PersonAdapter2.ItemSelected2  {
+public class HomePage extends AppCompatActivity implements AdapterPopularEvents.ItemSelected, AdapterAllEvents.ItemSelected2  {
 
-    ImageView home,search,favourite,calendar;
+    ImageView ivHome,ivSearch,ivFavourite,ivCalendar;
 
     //For using Home bar
-    final int filt=1;
-    final int searchReturn=2;
-    final int favReturn=3;
-    final int calendarReturn=4;
+    final int FILTER_RETURN=1;
+    final int SEARCH_RETURN=2;
+    final int FAVOURITE_RETURN=3;
+    final int CALENDAR_RETURN=4;
 
-    public static ArrayList<Images> list ;
-    ArrayList<Images> list1,list11,list22,favourites;
+    public static ArrayList<Event> list ;
+    ArrayList<Event> popularEvents,filteredPopularEvents,filteredAllEvents,favouriteEvents;
 
-    RecyclerView rv,rv2;
-    RecyclerView.Adapter myadapter,myadapter2;
-    RecyclerView.LayoutManager layoutmanager,layoutmanager2;
+    RecyclerView rvPopularEvents,rvAllEvents;
+    RecyclerView.Adapter myAdapterPopular,myAdapterAll;
+    RecyclerView.LayoutManager layoutmanagerPopular,layoutmanagerAll;
 
-    Intent intent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,64 +50,65 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        home=findViewById(R.id.ivHome);
-        search=findViewById(R.id.ivSearch);
-        favourite=findViewById(R.id.ivFavourite);
-        calendar=findViewById(R.id.ivCalendar);
+        ivHome=findViewById(R.id.ivHome);
+        ivSearch=findViewById(R.id.ivSearch);
+        ivFavourite=findViewById(R.id.ivFavourite);
+        ivCalendar=findViewById(R.id.ivCalendar);
         Favourite.editor = getSharedPreferences(Favourite.favouriteDataStore, MODE_PRIVATE).edit();
-        rv2=findViewById(R.id.recyclerview2);
-        rv2.setHasFixedSize(true);
+        rvAllEvents=findViewById(R.id.recyclerview2);
+        rvPopularEvents=findViewById(R.id.recyclerview1);
+        rvPopularEvents.setHasFixedSize(true);
 
-        rv=findViewById(R.id.recyclerview1);
-        rv.setHasFixedSize(true);
 
-        home.setImageResource(R.drawable.homec);
+        rvAllEvents.setHasFixedSize(true);
 
-        search.setOnClickListener(new View.OnClickListener() {
+        ivHome.setImageResource(R.drawable.homec);
+
+        ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                search.setImageResource(R.drawable.searchc);
-                home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favourite);
-                calendar.setImageResource(R.drawable.calendar);
+                ivSearch.setImageResource(R.drawable.searchc);
+                ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favourite);
+                ivCalendar.setImageResource(R.drawable.calendar);
 
                 Intent intentSearch=new Intent(HomePage.this,Search.class);
-                startActivityForResult(intentSearch,searchReturn);
+                startActivityForResult(intentSearch,SEARCH_RETURN);
             }
         });
 
-        favourite.setOnClickListener(new View.OnClickListener() {
+        ivFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favouritec);
-                calendar.setImageResource(R.drawable.calendar);
+                ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favouritec);
+                ivCalendar.setImageResource(R.drawable.calendar);
 
-                intent=new Intent(HomePage.this,com.yashakabra05.codebotsapp.Favourite.class);
-                startActivityForResult(intent,favReturn);
+             Intent   intentFavourite=new Intent(HomePage.this,com.yashakabra05.codebotsapp.Favourite.class);
+                startActivityForResult(intentFavourite,FAVOURITE_RETURN);
 
             }
         });
 
-        calendar.setOnClickListener(new View.OnClickListener() {
+        ivCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favourite);
-                calendar.setImageResource(R.drawable.calendarc);
+                ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favourite);
+                ivCalendar.setImageResource(R.drawable.calendarc);
 
-                Intent calendarActivity=new Intent(HomePage.this,Calendar.class);
-                startActivityForResult(calendarActivity,calendarReturn);
+                Intent intentCalendar=new Intent(HomePage.this,Calendar.class);
+                startActivityForResult(intentCalendar,CALENDAR_RETURN);
             }
         });
 
-        list=new ArrayList<Images>();       //for all events in home page
-        list1=new ArrayList<Images>();      //for all popular events
-        list11=new ArrayList<Images>();     //filter for all events in home page
-        list22=new ArrayList<Images>();     //filter for popular events
-        favourites=new ArrayList<Images>(); //for all favorite events
+        list=new ArrayList<Event>();       //for all events in home page
+        popularEvents=new ArrayList<Event>();      //for all popular events
+        filteredPopularEvents=new ArrayList<Event>();     //filter for all events in home page
+        filteredAllEvents=new ArrayList<Event>();     //filter for popular events
+        favouriteEvents=new ArrayList<Event>(); //for all favorite events
 
         //refrencing our data from firebase and adding to our array list
 
@@ -119,15 +120,15 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
 
                                           list.clear();
                                           for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                                              Images d = snapshot1.getValue(Images.class);
-                                              list.add(d);
-                                              if(d.getEvent_pro().equals("yes"))
+                                              Event obj = snapshot1.getValue(Event.class);
+                                              list.add(obj);
+                                              if(obj.getEvent_pro().equals("yes"))
                                               {
-                                                  list1.add(d);
+                                                  popularEvents.add(obj);
                                               }
                                           }
-                                          myadapter.notifyDataSetChanged();
-                                          myadapter2.notifyDataSetChanged();
+                                          myAdapterPopular.notifyDataSetChanged();
+                                          myAdapterAll.notifyDataSetChanged();
                                       }
 
             @Override
@@ -138,18 +139,18 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
 
         // setting adapters for home feed and popular events
 
-        myadapter2=new PersonAdapter2(HomePage.this,list);
-        rv2.setAdapter(myadapter2);
+        myAdapterAll=new AdapterAllEvents(HomePage.this,list);
+        rvAllEvents.setAdapter(myAdapterAll);
 
-        myadapter=new PersonAdapter(this,list1);
-        rv.setAdapter(myadapter);
+        myAdapterPopular=new AdapterPopularEvents(this,popularEvents);
+        rvPopularEvents.setAdapter(myAdapterPopular);
 
-        layoutmanager=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
-        rv.setLayoutManager(layoutmanager);
+        layoutmanagerPopular=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        rvPopularEvents.setLayoutManager(layoutmanagerPopular);
 
 
-        layoutmanager2=new LinearLayoutManager(HomePage.this);
-        rv2.setLayoutManager(layoutmanager2);
+        layoutmanagerAll=new LinearLayoutManager(HomePage.this);
+        rvAllEvents.setLayoutManager(layoutmanagerAll);
     }
 
     //connects action bar to home page
@@ -167,17 +168,17 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
         switch(item.getItemId())
         {
             case R.id.filter:
-                startActivityForResult(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Filter.class),filt);
+                startActivityForResult(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Filter.class),FILTER_RETURN);
                 break;
-            case R.id.profile:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Profile_firstpage.class));
+            case R.id.profile:startActivity(new Intent(HomePage.this, ProfileFirstPage.class));
                 break;
             case R.id.help:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Helpmain.class));
                 break;
-            case R.id.ContactUs:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.contactus.class));
+            case R.id.ContactUs:startActivity(new Intent(HomePage.this, AboutUs.class));
                 break;
             case R.id.feedback:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Feedback.class));
                 break;
-            case R.id.event:startActivity(new Intent(HomePage.this, com.yashakabra05.codebotsapp.Create_event_first_Activity.class));
+            case R.id.event:startActivity(new Intent(HomePage.this, CreateEventFirstActivity.class));
                 break;
             case R.id.myevents:startActivity(new Intent(HomePage.this,com.yashakabra05.codebotsapp.MyEventsList.class));
             break;
@@ -194,36 +195,36 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
         String type;
         switch(requestCode)
         {
-            case filt:
+            case FILTER_RETURN:
 
             if(resultCode==RESULT_OK)
             {
-                list11.clear();
-                list22.clear();
+                filteredPopularEvents.clear();
+                filteredAllEvents.clear();
 
                 type=data.getStringExtra("cateogary");
-                for(int i=0;i<list1.size();i++)
+                for(int i=0;i<popularEvents.size();i++)
                 {
-                    if((list1.get(i).getEvent_type().equals(type)))
+                    if((popularEvents.get(i).getEvent_type().equals(type)))
                     {
-                        list11.add(list.get(i));
+                        filteredPopularEvents.add(list.get(i));
                     }
                 }
                 for(int i=0;i<list.size();i++)
                 {
                     if((list.get(i).getEvent_type().equals(type)))
                     {
-                        list22.add(list.get(i));
+                        filteredAllEvents.add(list.get(i));
                     }
                 }
-                myadapter.notifyDataSetChanged();
+                myAdapterPopular.notifyDataSetChanged();
 
-                myadapter=new PersonAdapter(this,list11);
-                rv.setAdapter(myadapter);
+                myAdapterPopular=new AdapterPopularEvents(this,filteredPopularEvents);
+                rvPopularEvents.setAdapter(myAdapterPopular);
 
-                myadapter2.notifyDataSetChanged();
-                myadapter2=new PersonAdapter2(this,list11);
-                rv2.setAdapter(myadapter2);
+                myAdapterPopular.notifyDataSetChanged();
+                myAdapterAll=new AdapterAllEvents(this,filteredAllEvents);
+                rvAllEvents.setAdapter(myAdapterAll);
 
             }
             else if(resultCode==RESULT_CANCELED)
@@ -231,17 +232,17 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
                 Toast.makeText(this, "yod did not filter you choice!", Toast.LENGTH_SHORT).show();
             }
             break;
-           case searchReturn:if(resultCode==RESULT_CANCELED)
-                home.setImageResource(R.drawable.homec);
-                search.setImageResource(R.drawable.search);
+            case SEARCH_RETURN:if(resultCode==RESULT_CANCELED)
+                ivHome.setImageResource(R.drawable.homec);
+                ivSearch.setImageResource(R.drawable.search);
                 break;
-            case favReturn:if(resultCode==RESULT_CANCELED)
-                home.setImageResource(R.drawable.homec);
-                favourite.setImageResource(R.drawable.favourite);
+            case FAVOURITE_RETURN:if(resultCode==RESULT_CANCELED)
+                ivHome.setImageResource(R.drawable.homec);
+                ivFavourite.setImageResource(R.drawable.favourite);
                 break;
-            case calendarReturn:if(resultCode==RESULT_CANCELED)
-                home.setImageResource(R.drawable.homec);
-                calendar.setImageResource(R.drawable.calendar);
+            case CALENDAR_RETURN:if(resultCode==RESULT_CANCELED)
+                ivHome.setImageResource(R.drawable.homec);
+                ivCalendar.setImageResource(R.drawable.calendar);
                 break;
         }
     }

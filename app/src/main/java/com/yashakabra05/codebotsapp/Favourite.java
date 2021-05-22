@@ -8,34 +8,25 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
-
-import static com.yashakabra05.codebotsapp.HomePage.list;
 
 public class Favourite extends AppCompatActivity implements FavouriteCustom.itemselec8 {
     public static  SharedPreferences.Editor editor;
     public static final String favouriteDataStore="favouriteData";
-    final int homeReturn = 1;
-    final int searchReturn = 2;
-    final int calendarReturn = 3;
+    final int HOME_RETURN = 1;
+    final int SEARCH_RETURN = 2;
+    final int CALENDAR_RETURN= 3;
 
     ListView lv;
 
 
 
-    public static  ArrayList<Images> items=new ArrayList<Images>();
-    ArrayList<Images> items2=new ArrayList<Images>();
-    ImageView home,search,favourite,calendar;
+    public static  ArrayList<Event> items=new ArrayList<Event>();
+    ArrayList<Event> items2=new ArrayList<Event>();
+    ImageView ivHome,ivSearch,ivFavourite,ivCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +37,11 @@ public class Favourite extends AppCompatActivity implements FavouriteCustom.item
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
         lv=findViewById(R.id.lv);
-        home=findViewById(R.id.ivHome);
-        search=findViewById(R.id.ivSearch);
-        favourite=findViewById(R.id.ivFavourite);
-        calendar=findViewById(R.id.ivCalendar);
-        favourite.setImageResource(R.drawable.favouritec);
+        ivHome=findViewById(R.id.ivHome);
+        ivSearch=findViewById(R.id.ivSearch);
+        ivFavourite=findViewById(R.id.ivFavourite);
+        ivCalendar=findViewById(R.id.ivCalendar);
+        ivFavourite.setImageResource(R.drawable.favouritec);
         SharedPreferences prefrences=getSharedPreferences(favouriteDataStore, MODE_PRIVATE);
         for(int i=0;i<HomePage.list.size();i++)
         {
@@ -61,62 +52,45 @@ public class Favourite extends AppCompatActivity implements FavouriteCustom.item
             }
 
         }
-        home.setOnClickListener(new View.OnClickListener() {
+        ivHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.homec);
-                favourite.setImageResource(R.drawable.favourite);
-                calendar.setImageResource(R.drawable.calendar);
-                Intent intentSearch=new Intent(Favourite.this,HomePage.class);
-                startActivityForResult(intentSearch,homeReturn);
+                ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.homec);
+                ivFavourite.setImageResource(R.drawable.favourite);
+                ivCalendar.setImageResource(R.drawable.calendar);
+                Intent intentHome=new Intent(Favourite.this,HomePage.class);
+                startActivityForResult(intentHome,HOME_RETURN);
             }
         });
 
-        search.setOnClickListener(new View.OnClickListener() {
+        ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favouritec);
-                calendar.setImageResource(R.drawable.calendar);
+                ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favouritec);
+                ivCalendar.setImageResource(R.drawable.calendar);
 
                 Intent intentSearch=new Intent(Favourite.this,Search.class);
-                startActivityForResult(intentSearch,searchReturn);
+                startActivityForResult(intentSearch,SEARCH_RETURN);
 
             }
         });
 
-        calendar.setOnClickListener(new View.OnClickListener() {
+        ivCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                search.setImageResource(R.drawable.search);
-                home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favourite);
-                calendar.setImageResource(R.drawable.calendarc);
-                Intent intentSearch=new Intent(Favourite.this, Calendar.class);
-                startActivityForResult(intentSearch,calendarReturn);
+               ivSearch.setImageResource(R.drawable.search);
+                ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favourite);
+                ivCalendar.setImageResource(R.drawable.calendarc);
+                Intent intentCalendar=new Intent(Favourite.this, Calendar.class);
+                startActivityForResult(intentCalendar,CALENDAR_RETURN);
             }
         });
 
-       /* DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("my favs");
 
-        ref.addValueEventListener(new ValueEventListener() {
-                                      @Override
-                                      public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                          items.clear();
-                                          for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                                              Images d = snapshot1.getValue(Images.class);
-                                              items.add(d);
-                                              }
-                                          }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-                                      });*/
 
             FavouriteCustom adapter=new FavouriteCustom(this, items2);
         lv.setAdapter(adapter);
@@ -127,20 +101,20 @@ public class Favourite extends AppCompatActivity implements FavouriteCustom.item
         super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
-            case homeReturn:
+            case HOME_RETURN:
                 if (resultCode == RESULT_CANCELED)
-                    home.setImageResource(R.drawable.home);
-                favourite.setImageResource(R.drawable.favouritec);
+                    ivHome.setImageResource(R.drawable.home);
+                ivFavourite.setImageResource(R.drawable.favouritec);
                 break;
-            case searchReturn:
+            case SEARCH_RETURN:
                 if (resultCode == RESULT_CANCELED)
-                    search.setImageResource(R.drawable.search);
-                favourite.setImageResource(R.drawable.favouritec);
+                    ivSearch.setImageResource(R.drawable.search);
+                ivFavourite.setImageResource(R.drawable.favouritec);
                 break;
-            case calendarReturn:
+            case CALENDAR_RETURN:
                 if (resultCode == RESULT_CANCELED)
-                    calendar.setImageResource(R.drawable.calendar);
-                favourite.setImageResource(R.drawable.favouritec);
+                    ivCalendar.setImageResource(R.drawable.calendar);
+                ivFavourite.setImageResource(R.drawable.favouritec);
                 break;
         }
     }

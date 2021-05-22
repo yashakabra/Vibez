@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -98,7 +97,7 @@ public class Create_event_sec_Activity extends AppCompatActivity {
                 String event_pic = getshared.getString("event_pic","not known");//here add default pics
                 String event_guide = getshared.getString("event_guide","not known");
 
-                Images event = new Images(event_date,event_fav,event_name, event_pro.getText().toString(), event_type, event_info, event_location,
+                Event event = new Event(event_date,event_fav,event_name, event_pro.getText().toString(), event_type, event_info, event_location,
                          event_contact,event_tprice.getText().toString(), event_ticket.getText().toString(),event_time);
                 event.setEvent_pic(event_pic);
                 event.setGuide_pic(event_guide);

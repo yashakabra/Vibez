@@ -16,9 +16,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class FavouriteCustom extends ArrayAdapter<Images> {
+public class FavouriteCustom extends ArrayAdapter<Event> {
 
-    private ArrayList<Images> values;
+    private ArrayList<Event> values;
 
     private Context context;
 
@@ -28,7 +28,7 @@ public class FavouriteCustom extends ArrayAdapter<Images> {
 
     TextView tvName,tvDate;
 
-    FavouriteCustom(Context context, ArrayList<Images> list) {
+    FavouriteCustom(Context context, ArrayList<Event> list) {
 
         super(context, R.layout.list_view_element, list);
         values = list;
