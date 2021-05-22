@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,13 +12,17 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/border_profile">
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/border_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
@@ -31,11 +35,12 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
+            android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:text="MY PROFILE"
             android:textColor="@color/black"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="normal|bold" />
 
         <View
             android:id="@+id/view"
@@ -48,51 +53,147 @@
 
         <ImageView
             android:id="@+id/iv_profileimage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_marginTop="80dp"
+            tools:srcCompat="@drawable/logo" />
 
-        <TextView
-            android:id="@+id/et_profilename"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="225dp"
-            android:gravity="center_horizontal"
-            android:text="TextView"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="210dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/et_profiletel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="275dp"
-            android:gravity="center_horizontal"
-            android:text="TextView"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto"
+                android:paddingLeft="20dp"
+                android:text="Name - "
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
-        <TextView
-            android:id="@+id/et_profileemail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="325dp"
-            android:gravity="center_horizontal"
-            android:text="TextView"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/et_profilename"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|left"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="start|center_horizontal"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="normal" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/et_profilecity"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="375dp"
-            android:gravity="center_horizontal"
-            android:text="TextView"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="260dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto"
+                android:paddingLeft="20dp"
+                android:text="Phone  -"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/et_profiletel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|left"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="start|center_horizontal"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="310dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto"
+                android:paddingLeft="20dp"
+                android:text="Email -"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/et_profileemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|left"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="start|center_horizontal"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="360dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto"
+                android:paddingLeft="20dp"
+                android:text="City -"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/et_profilecity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|left"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="start|center_horizontal"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="normal" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_logout"
@@ -107,7 +208,6 @@
             app:backgroundTint="@color/black" />
 
 
-
     </FrameLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="7dp"
+        android:layout_margin="10dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="10dp"
         app:cardElevation="20dp"
@@ -25,7 +25,13 @@
                 android:layout_width="400dp"
                 android:layout_height="275dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="4dp"
+                android:adjustViewBounds="true"
                 android:clickable="true" />
 
             <LinearLayout
@@ -37,19 +43,21 @@
                     android:id="@+id/tvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:layout_weight="4"
+                    android:fontFamily="@font/roboto"
                     android:text="TextView"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold|italic" />
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/vectorRv2"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:layout_weight="1"
                     android:clickable="true"
                     app:srcCompat="@drawable/favourite" />
@@ -61,14 +69,42 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/roboto"
+                    android:text="Date : "
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
                     android:layout_weight="2"
+                    android:fontFamily="@font/roboto"
                     android:text="TextView"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="2"
+                    android:gravity="right"
+                    android:text="Price :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvPrice"
@@ -76,9 +112,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/roboto"
                     android:gravity="right"
                     android:text="TextView"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>

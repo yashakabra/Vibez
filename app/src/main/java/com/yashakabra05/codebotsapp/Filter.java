@@ -10,20 +10,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Filter extends AppCompatActivity {
 
-    String type;
+    private String type;
 
-    TextView tvSong,tvDance,tvSports,tvComedy,tvAward,tvTheatre;
+    private TextView tvSong,tvDance,tvSports,tvComedy,tvAward,tvTheatre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filter);
+        setContentView(R.layout.new_filter);
 
         tvSong=findViewById(R.id.tvSongs);
         tvDance=findViewById(R.id.tvDance);
         tvSports=findViewById(R.id.tvSports);
         tvComedy=findViewById(R.id.tvComedy);
-        tvAward=findViewById(R.id.tvAward);
+        tvAward=findViewById(R.id.tvAwards);
         tvTheatre=findViewById(R.id.tvTheatre);
 
         tvSong.setOnClickListener(new View.OnClickListener() {
