@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ADD8E6"
+    android:background="@color/blue_light"
     android:orientation="vertical"
     android:hardwareAccelerated="true"
     xmlns:card_view="http://schemas.android.com/tools"
@@ -12,7 +12,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,12 +25,12 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/border_profile">
 
@@ -65,7 +69,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="monospace"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="TextView"
@@ -82,12 +86,12 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="serif"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="Price:"
                         android:textSize="20sp"
-                        android:textStyle="italic" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/tvprice"
@@ -98,7 +102,7 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="@font/amaranth_italic"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="9dp"
                         android:paddingRight="5dp"
                         android:text="TextView"
@@ -115,12 +119,12 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="serif"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="Date and Time:"
                         android:textSize="20sp"
-                        android:textStyle="italic" />
+                        android:textStyle="normal" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -142,7 +146,7 @@
                             android:layout_marginTop="0dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginRight="10dp"
-                            android:fontFamily="@font/amaranth_italic"
+                            android:fontFamily="@font/roboto"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
                             android:text="TextView"
@@ -159,7 +163,7 @@
                             android:layout_marginTop="0dp"
                             android:layout_marginEnd="0dp"
                             android:layout_marginRight="0dp"
-                            android:fontFamily="@font/amaranth_italic"
+                            android:fontFamily="@font/roboto"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
                             android:text="TextView"
@@ -177,12 +181,12 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="@font/abeezee_italic"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="More Info:"
                         android:textSize="20sp"
-                        android:textStyle="italic" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/tvinfo"
@@ -193,7 +197,7 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="@font/abeezee_italic"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="9dp"
                         android:paddingRight="5dp"
                         android:text="TextView"
@@ -210,12 +214,12 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="@font/abeezee_italic"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="Location:"
                         android:textSize="20sp"
-                        android:textStyle="italic" />
+                        android:textStyle="normal" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -239,7 +243,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="8"
-                            android:fontFamily="@font/amaranth_italic"
+                            android:fontFamily="@font/roboto"
                             android:paddingTop="3dp"
                             android:text="TextView"
                             android:textColor="@color/black"
@@ -257,10 +261,12 @@
                         android:orientation="horizontal">
 
                         <fragment
-                            android:layout_width="match_parent"
-                            android:layout_height="200sp"
                             android:id="@+id/fragmentmap"
-                            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="20dp" />
 
                     </LinearLayout>
 

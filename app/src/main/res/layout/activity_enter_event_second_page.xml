@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ADD8E6"
+    android:background="@color/blue_light"
     tools:context=".EnterEventSecondPage">
 
 
@@ -39,11 +39,12 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
+                    android:fontFamily="@font/roboto"
                     android:gravity="center_horizontal"
-                    android:text="We are there to guide you throughout the event"
+                    android:text="We are here to guide you throughout the event"
                     android:textColor="@color/black"
                     android:textSize="24sp"
-                    android:textStyle="bold|italic" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView20"
@@ -54,10 +55,11 @@
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
+                    android:fontFamily="@font/roboto"
                     android:text="GUIDE MAP"
                     android:textColor="@color/black"
                     android:textSize="20sp"
-                    android:textStyle="bold|italic" />
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/ivGuideMap"
@@ -96,7 +98,9 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="2"
-                        android:text="Don't worry we will be reaching at your location shortly" />
+                        android:fontFamily="@font/roboto"
+                        android:text="Don't worry we will be reaching at your location shortly"
+                        android:textColor="@color/red" />
                 </LinearLayout>
 
                 <TextView
@@ -108,12 +112,12 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginRight="15dp"
+                    android:fontFamily="@font/roboto"
                     android:text="EVENTMANAGER DETAILS"
                     android:textColor="@color/black"
                     android:textSize="20sp"
-                    android:textStyle="bold|italic"
 
-                    />
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -128,12 +132,13 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="3"
-                        android:paddingLeft="10dp"
+                        android:fontFamily="@font/roboto"
 
+                        android:paddingLeft="10dp"
                         android:text="Phone no-"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold|italic" />
+                        android:textStyle="bold" />
 
                     <ImageButton
                         android:id="@+id/btnCall"
@@ -155,11 +160,12 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginRight="15dp"
+                    android:fontFamily="@font/roboto"
                     android:gravity="center_horizontal"
                     android:text="EMERGENCY"
                     android:textColor="@color/black"
                     android:textSize="24sp"
-                    android:textStyle="bold|italic" />
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btnMedical"
@@ -184,6 +190,7 @@
                     android:layout_marginTop="3dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginRight="15dp"
+                    android:fontFamily="@font/roboto"
                     android:gravity="center_horizontal"
                     android:text="ARE YOU SURE?"
                     android:textColor="@color/purple_500" />
@@ -242,6 +249,7 @@
                     android:layout_marginTop="3dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginRight="15dp"
+                    android:fontFamily="@font/roboto"
                     android:gravity="center_horizontal"
                     android:text="ARE YOU SURE?"
                     android:textColor="@color/purple_500" />

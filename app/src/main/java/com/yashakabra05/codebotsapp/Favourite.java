@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import static com.yashakabra05.codebotsapp.HomePage.list;
 
-public class Favourite extends AppCompatActivity {
+public class Favourite extends AppCompatActivity implements FavouriteCustom.itemselec8 {
     public static  SharedPreferences.Editor editor;
     public static final String favouriteDataStore="favouriteData";
     final int homeReturn = 1;

@@ -59,6 +59,9 @@ public class CalendarCustomClass extends ArrayAdapter<Images> {
             public void onClick(View v) {
                 Intent it = new Intent((Context) activi,AskQuery.class);
                 it .putExtra("event name",tvName.getText().toString());
+                it.putExtra("event loc", calendarElements.get(position).location);
+                it.putExtra("guide map url",calendarElements.get(position).getGuide_pic());
+                it.putExtra("tel1",calendarElements.get(position).getManager_num());
                 ((Context) activi).startActivity(it);
             }
         });

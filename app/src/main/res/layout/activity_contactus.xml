@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
                 app:cardBackgroundColor="#FFFFFF"
@@ -73,14 +73,14 @@
                     android:paddingBottom="10dp">
 
                     <ImageView
-                        android:id="@+id/photo3"
+                        android:id="@+id/iv_yash"
                         android:layout_width="0dp"
                         android:layout_height="70dp"
 
                         android:layout_marginStart="15dp"
                         android:layout_marginLeft="0dp"
                         android:layout_weight="2"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        tools:srcCompat="@drawable/yash" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -92,35 +92,34 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/name3"
+                            android:id="@+id/textView19"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
-                            android:text="NAME-ANUJ PANDEY"
+                            android:text="NAME- YASH A KABRA"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/number3"
+                            android:id="@+id/number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
-                            android:text="CONTACT NO.-9129953788"
+                            android:text="CONTACT NO.- 7300915379"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/email3"
+                            android:id="@+id/email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
-                            android:text="EMAIL-anuj.20205037@mnnit.ac.in"
+                            android:text="EMAIL- yashakabra05@gmail.com"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
 
             <androidx.cardview.widget.CardView
@@ -144,7 +143,7 @@
                     android:paddingBottom="10dp">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/iv_krishna"
                         android:layout_width="0dp"
                         android:layout_height="70dp"
 
@@ -197,7 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
                 app:cardBackgroundColor="#FFFFFF"
@@ -213,14 +212,14 @@
                     android:paddingBottom="10dp">
 
                     <ImageView
-                        android:id="@+id/photo"
+                        android:id="@+id/iv_anuj"
                         android:layout_width="0dp"
                         android:layout_height="70dp"
 
                         android:layout_marginStart="15dp"
                         android:layout_marginLeft="0dp"
                         android:layout_weight="2"
-                        tools:srcCompat="@drawable/yash" />
+                        tools:srcCompat="@tools:sample/avatars" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -232,34 +231,37 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView19"
+                            android:id="@+id/name3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
-                            android:text="NAME- YASH A KABRA"
+                            android:text="NAME-ANUJ PANDEY"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/number"
+                            android:id="@+id/number3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
-                            android:text="CONTACT NO.- 7300915379"
+                            android:text="CONTACT NO.-9129953788"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/email"
+                            android:id="@+id/email3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
-                            android:text="EMAIL- yashakabra05@gmail.com"
+                            android:text="EMAIL-anuj.20205037@mnnit.ac.in"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -282,7 +284,7 @@
                     android:paddingBottom="10dp">
 
                     <ImageView
-                        android:id="@+id/photo4"
+                        android:id="@+id/iv_harsh"
                         android:layout_width="0dp"
                         android:layout_height="70dp"
 

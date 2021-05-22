@@ -109,9 +109,6 @@ public class EventInformation  extends AppCompatActivity  {
                     double latfield = address.getLatitude();
                     double longfield = address.getLongitude();
 
-                    //    LatLng latLng = new LatLng(latfield, longfield);
-                    Toast.makeText(EventInformation.this, String.valueOf(latfield), Toast.LENGTH_SHORT).show();
-
                     map.addMarker(new MarkerOptions().position(new LatLng(latfield, longfield)));
                     map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latfield, longfield)));
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom((new LatLng(latfield, longfield)), 15.0f));

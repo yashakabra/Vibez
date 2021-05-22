@@ -1,6 +1,7 @@
 package com.yashakabra05.codebotsapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ public class FavouriteCustom extends ArrayAdapter<Images> {
 
     ImageView iv;
 
+    itemselec8 activ;
+
     TextView tvName,tvDate;
 
     FavouriteCustom(Context context, ArrayList<Images> list) {
@@ -30,6 +33,7 @@ public class FavouriteCustom extends ArrayAdapter<Images> {
         super(context, R.layout.list_view_element, list);
         values = list;
         this.context = context;
+        activ = (itemselec8) context;
     }
 
     @NonNull
@@ -46,6 +50,25 @@ public class FavouriteCustom extends ArrayAdapter<Images> {
         tvDate.setText(values.get(position).getDate());
         Picasso.get().load(values.get(position).getEvent_pic()).placeholder(R.mipmap.ic_event).into(iv);
 
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent((Context) activ,EventInformation.class);
+                it.putExtra("event_pic",values.get(position).getEvent_pic());
+                it.putExtra("event_name",values.get(position).getEvent_name());
+                it.putExtra("event_date",values.get(position).getDate());
+                it.putExtra("event_time",values.get(position).getTime());
+                it.putExtra("event_info",values.get(position).getInfo());
+                it.putExtra("event_location",values.get(position).getLocation());
+                it.putExtra("event_tcost",values.get(position).getT_cost());
+                ((Context) activ).startActivity(it);
+            }
+        });
+
         return v;
     }
+
+    public interface itemselec8 {
+    }
+
 }

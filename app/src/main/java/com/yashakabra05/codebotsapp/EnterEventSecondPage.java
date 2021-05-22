@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.karumi.dexter.Dexter;
@@ -30,6 +31,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.squareup.picasso.Picasso;
 import com.yashakabra05.codebotsapp.Class.Users;
 
 import java.util.ArrayList;
@@ -45,6 +47,8 @@ public class EnterEventSecondPage extends AppCompatActivity {
     ArrayList<Users> users;
     String latitudefield, longitudefield;
     FusedLocationProviderClient client;
+
+    String name = getIntent().getStringExtra("event name");
 
 
     @Override
@@ -89,13 +93,18 @@ public class EnterEventSecondPage extends AppCompatActivity {
         btnHarrasmentYes.setVisibility(View.GONE);
         btnHarrasmentNo.setVisibility(View.GONE);
 
+        Picasso.get().load(getIntent().getStringExtra("guide map")).placeholder(R.mipmap.ic_event).into( ivGuideMap);
+
+        tvPhoneNumber.setText("Phone no:" + getIntent().getStringExtra("tel"));
+
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:9838337433"));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+getIntent().getStringExtra("tel")));
                 startActivity(intent);
             }
         });
+
         btnMedical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -203,34 +212,6 @@ public class EnterEventSecondPage extends AppCompatActivity {
             }
         });
 
-
-
-      /*  locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        // Define the criteria how to select the locatioin provider -> use
-        // default
-        Criteria criteria = new Criteria();
-        provider = locationManager.getBestProvider(criteria, false);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Location location = locationManager.getLastKnownLocation(provider);
-
-        // Initialize the location fields
-        if (location != null) {
-            onLocationChanged(location);
-        } else {
-           latitudefield = "Location not available";
-            longitudefield = "Location not available";
-        }
-
-       */
         btnExitEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

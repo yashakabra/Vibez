@@ -1,33 +1,44 @@
 package com.yashakabra05.codebotsapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.yashakabra05.codebotsapp.LoginActivity;
+import com.yashakabra05.codebotsapp.R;
 
 public class Splash extends AppCompatActivity {
+
+    private static int SPLASH_SCREEN_TIME_OUT=2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //This method is used so that your splash activity
+        //can cover the entire screen.
+
         setContentView(R.layout.activity_splash);
+        //this will bind your MainActivity.class file with activity_main.
 
-        Thread thread = new Thread(){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i=new Intent(Splash.this,
+                        LoginActivity.class);
+                //Intent is used to switch from one activity to another.
 
-            public void run()
-            {
-                try{
-                    sleep(0);
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-                finally {
-                    {
-                        startActivity(new Intent(Splash.this,HomePage.class));
-                    }
-                }
+                startActivity(i);
+                //invoke the SecondActivity.
+
+                finish();
+                //the current activity will get finished.
             }
-        };
+        }, SPLASH_SCREEN_TIME_OUT);
     }
 }
