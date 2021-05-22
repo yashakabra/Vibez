@@ -10,22 +10,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Create_event_sec_Activity extends AppCompatActivity {
 
-    EditText  event_tprice, event_pro, event_ticket;
+    private EditText  event_tprice, event_pro, event_ticket;
 
-    TextView total_cost,tv_pay;
+    private TextView total_cost,tv_pay;
 
-    Button event_sub,btn_pay;
+    private Button event_sub,btn_pay;
 
-    String total, event_fav = "F";
+    private String total, event_fav = "F";
 
-    FirebaseAuth auth;
-    FirebaseDatabase database;
+    private FirebaseAuth auth;
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +52,27 @@ public class Create_event_sec_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(event_pro.getText().toString().equals("yes"))
+                if(event_tprice.getText().toString().isEmpty() ||  event_ticket.getText().toString().isEmpty() ||  event_pro.getText().toString().isEmpty())
                 {
-                    total = "3000rs";
-                }
-                else
-                {
-                    total = "2000rs";
+                    Toast.makeText(Create_event_sec_Activity.this, "Please enter all fields !", Toast.LENGTH_SHORT).show();
                 }
 
-                total_cost.setText(total);
 
-                tv_pay.setVisibility(View.VISIBLE);
-                btn_pay.setVisibility(View.VISIBLE);
-                total_cost.setVisibility(View.VISIBLE);
+
+                else {
+
+                    if (event_pro.getText().toString().equals("yes")) {
+                        total = "3000rs";
+                    } else {
+                        total = "2000rs";
+                    }
+
+                    total_cost.setText(total);
+
+                    tv_pay.setVisibility(View.VISIBLE);
+                    btn_pay.setVisibility(View.VISIBLE);
+                    total_cost.setVisibility(View.VISIBLE);
+                }
 
             }
         });

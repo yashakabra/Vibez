@@ -35,7 +35,6 @@
                     android:orientation="vertical">
 
 
-
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="match_parent"
@@ -45,6 +44,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginRight="15dp"
+                        android:fontFamily="@font/roboto"
                         android:gravity="center_horizontal"
                         android:text="HELP SERVICE"
                         android:textColor="@color/black"
@@ -69,12 +69,14 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto"
                         android:text="In this app we help you in managing your events by providing features like booking an event you
 like,reaching to the event,and various security
 and giude features while you are in the event.
 We also provide assistance to event managers by helping them in creating an event as well as advertize them."
                         android:textColor="@color/black"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/quicklinks"
                         android:layout_width="match_parent"
@@ -84,6 +86,7 @@ We also provide assistance to event managers by helping them in creating an even
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginRight="15dp"
+                        android:fontFamily="@font/roboto"
                         android:gravity="center_horizontal"
                         android:text="QUICK LINKS"
                         android:textColor="@color/black"
@@ -107,6 +110,7 @@ We also provide assistance to event managers by helping them in creating an even
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="5dp"
                         android:text="1-"
                         android:textColor="@color/black" />
@@ -120,8 +124,10 @@ We also provide assistance to event managers by helping them in creating an even
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto"
                         android:text="This will help you to contact our expert"
                         android:textColor="@color/black" />
+
                     <TextView
                         android:id="@+id/textView11"
                         android:layout_width="match_parent"
@@ -131,6 +137,7 @@ We also provide assistance to event managers by helping them in creating an even
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="5dp"
                         android:text="2-"
                         android:textColor="@color/black" />
@@ -144,8 +151,10 @@ We also provide assistance to event managers by helping them in creating an even
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto"
                         android:text="This will help you to contact our chat bot"
                         android:textColor="@color/black" />
+
                     <TextView
                         android:id="@+id/textView13"
                         android:layout_width="match_parent"
@@ -155,6 +164,7 @@ We also provide assistance to event managers by helping them in creating an even
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="5dp"
                         android:text="3-"
                         android:textColor="@color/black" />
@@ -168,8 +178,10 @@ We also provide assistance to event managers by helping them in creating an even
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto"
                         android:text="This will help you to guide the features of our app"
                         android:textColor="@color/black" />
+
                     <TextView
                         android:id="@+id/textView15"
                         android:layout_width="match_parent"
@@ -179,6 +191,7 @@ We also provide assistance to event managers by helping them in creating an even
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto"
                         android:paddingLeft="5dp"
                         android:text="4-"
                         android:textColor="@color/black" />
@@ -192,6 +205,7 @@ We also provide assistance to event managers by helping them in creating an even
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto"
                         android:text="This will help you to "
                         android:textColor="@color/black" />
 
@@ -212,6 +226,7 @@ We also provide assistance to event managers by helping them in creating an even
                             android:layout_marginBottom="3dp"
                             android:layout_weight="3"
                             android:ems="10"
+                            android:fontFamily="@font/roboto"
                             android:hint="tell us any othe doubt."
                             android:inputType="textPersonName" />
 

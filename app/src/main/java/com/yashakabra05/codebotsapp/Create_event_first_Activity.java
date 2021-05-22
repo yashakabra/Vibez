@@ -40,21 +40,21 @@ import static java.security.AccessController.getContext;
 
 public class Create_event_first_Activity extends AppCompatActivity {
 
-    EditText event_name, event_location, event_date, event_time, event_info, event_contact;
+    private EditText event_name, event_location, event_date, event_time, event_info, event_contact;
 
-    ArrayList<String> types = new ArrayList<String>();
+    private ArrayList<String> types = new ArrayList<String>();
 
-    String eventpic,eventguide;
+    private String eventpic,eventguide;
 
-    AutoCompleteTextView event_type;
+    private AutoCompleteTextView event_type;
 
-    ImageView event_map, event_pic;
+    private ImageView event_map, event_pic;
 
-    Button btnnextsec;
+    private Button btnnextsec;
 
-    FirebaseDatabase database;
-    FirebaseAuth auth;
-    FirebaseStorage storage;
+    private FirebaseDatabase database;
+    private FirebaseAuth auth;
+    private FirebaseStorage storage;
 
 
 
@@ -110,10 +110,17 @@ public class Create_event_first_Activity extends AppCompatActivity {
 
                 editor.apply();
 
+                if( event_contact.getText().toString().isEmpty() || event_info.getText().toString().isEmpty() || event_time.getText().toString().isEmpty() ||event_name.getText().toString().isEmpty() || event_type.getText().toString().isEmpty() || event_location.getText().toString().isEmpty() || event_date.getText().toString().isEmpty() )
+                {
+                    Toast.makeText(Create_event_first_Activity.this, "Please enter all fields !", Toast.LENGTH_SHORT).show();
+                }
+                else{
                 Intent intent = new Intent(Create_event_first_Activity.this, Create_event_sec_Activity.class);
                 startActivity(intent);
                 finish();
-            }
+                }
+
+                }
         });
 
         event_pic.setOnClickListener(new View.OnClickListener() {

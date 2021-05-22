@@ -16,12 +16,12 @@ import static com.yashakabra05.codebotsapp.R.layout.activity_helpmain;
 
 public class Helpmain extends AppCompatActivity {
 
-    EditText et_doubt;
+    private EditText et_doubt;
 
-    Button btn_submit;
+    private Button btn_submit;
 
-    FirebaseDatabase database;
-    FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +38,16 @@ public class Helpmain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(et_doubt.getText().toString().equals(null))
-                {
+                if (et_doubt.getText().toString().isEmpty()) {
                     Toast.makeText(Helpmain.this, "Please enter your doubt!!", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    database.getReference().child("Help").child(auth.getCurrentUser().getUid()).push().setValue(et_doubt.getText().toString());
+
+                    Toast.makeText(Helpmain.this, "We will reach you shortly!!", Toast.LENGTH_SHORT).show();
+
+                    startActivity(new Intent(Helpmain.this, com.yashakabra05.codebotsapp.HomePage.class));
                 }
-
-                database.getReference().child("Help").child(auth.getCurrentUser().getUid()).push().setValue(et_doubt.getText().toString());
-
-                Toast.makeText(Helpmain.this, "We will reach you shortly!!", Toast.LENGTH_SHORT).show();
-
-                startActivity(new Intent(Helpmain.this,com.yashakabra05.codebotsapp.HomePage.class));
             }
         });
     }

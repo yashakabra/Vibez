@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="210dp"
+            android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:text=" --TERMS AND CONDITIONS-- "
             android:textColor="@color/black"
@@ -41,6 +42,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:ems="10"
+            android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:hint="No. of tickets"
             android:inputType="number"
@@ -56,6 +58,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="90dp"
             android:ems="10"
+            android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:hint="price of ticket"
             android:inputType="number"
@@ -71,13 +74,13 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="150dp"
             android:ems="10"
+            android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:hint="Promotion(yes/no)"
             android:inputType="textPersonName"
             android:textColorHighlight="@color/black"
             android:textColorHint="@color/black"
             android:textColorLink="@color/black" />
-
 
 
         <Button
@@ -88,7 +91,7 @@
             android:layout_marginTop="325dp"
             android:gravity="center_horizontal"
             android:text="Submit"
-            app:backgroundTint="@color/black" />
+            app:backgroundTint="@color/black1" />
 
         <TextView
             android:id="@+id/textView17"
@@ -96,6 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="250dp"
+            android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:text="Basic charge: 2000rs \n Promotion charge: 1000rs \n We are glad to serve!!"
             android:textColor="@color/black"
@@ -110,6 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="385dp"
+            android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:text="YOUR TOTAL BILL IS :"
             android:textColor="@color/black"
@@ -126,6 +131,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="425dp"
             android:ems="10"
+            android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:hint="Your total cost"
             android:inputType="number"
@@ -142,7 +148,7 @@
             android:layout_marginTop="460dp"
             android:gravity="center_horizontal"
             android:text="Pay"
-            app:backgroundTint="@color/black" />
+            app:backgroundTint="@color/black1" />
     </FrameLayout>
 
 </LinearLayout>

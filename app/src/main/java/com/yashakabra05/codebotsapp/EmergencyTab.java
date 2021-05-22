@@ -29,7 +29,7 @@ import java.util.List;
 public class EmergencyTab extends AppCompatActivity {
 
     TextView tv_person_name, tv_difficulty, tv_phone_no;
-    Button btn_call;
+    Button btn_call, btn_ambulance;
     SupportMapFragment victimmap;
     GoogleMap map;
 
@@ -45,6 +45,7 @@ public class EmergencyTab extends AppCompatActivity {
         tv_person_name = findViewById(R.id.tv_person_name);
         tv_phone_no = findViewById(R.id.tv_phone_no);
         btn_call = findViewById(R.id.btn_call);
+        btn_ambulance = findViewById(R.id.btn_ambulance);
 
         String victim_name = getIntent().getStringExtra("victim name");
         String type_emer = getIntent().getStringExtra("emergency called");
@@ -60,6 +61,15 @@ public class EmergencyTab extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + victim_tel));
+                startActivity(intent);
+            }
+        });
+
+        btn_ambulance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String g = "108";
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + g));
                 startActivity(intent);
             }
         });

@@ -89,30 +89,6 @@ public class EnterActivity extends AppCompatActivity {
                         }
                     }
                 });
-             /*   SharedPreferences getshared = getSharedPreferences("data", Context.MODE_PRIVATE);
-
-                String name = getshared.getString("name","not known");
-                String email = getshared.getString("email", "not known");
-                String uid = auth.getCurrentUser().getUid();
-                final String location = etlocation3.getText().toString();
-                final String phone = etphone3.getText().toString();
-
-                SharedPreferences sp = getSharedPreferences("profile",Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString("name",name);
-                editor.putString("email",email);
-                editor.putString("location",location);
-                editor.putString("tel",phone);
-                editor.apply();
-
-                Users users = new Users(email,location,name,phone,uid);
-                database.getReference().child("users").child(auth.getCurrentUser().getUid()).setValue(users);
-
-                Intent i = new Intent(EnterActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
-
-              */
             }
         });
 

@@ -44,6 +44,8 @@ public class Profile_firstpage extends AppCompatActivity {
        tv_profileemail = findViewById(R.id.et_profileemail);
        btn_logout = findViewById(R.id.btn_logout);
 
+       iv_profileimage.setImageResource(R.drawable.logo);
+
         SharedPreferences sp2 = getSharedPreferences("profile",MODE_PRIVATE);
 
         tv_profilename.setText(sp2.getString("name","NP"));

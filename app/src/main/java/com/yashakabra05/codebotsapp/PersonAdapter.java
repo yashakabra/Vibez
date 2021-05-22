@@ -44,7 +44,6 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             iv= itemView.findViewById(R.id.iv);
-            tv= itemView.findViewById(R.id.tv);
         }
     }
 
