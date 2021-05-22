@@ -7,6 +7,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -48,7 +49,7 @@ public class EnterEventSecondPage extends AppCompatActivity {
     String latitudefield, longitudefield;
     FusedLocationProviderClient client;
 
-    String name = getIntent().getStringExtra("event name");
+    String name ;
 
 
     @Override
@@ -56,11 +57,17 @@ public class EnterEventSecondPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_event_second_page);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         client = LocationServices.getFusedLocationProviderClient(this);
 
         users = new ArrayList<>();
+
+        name = getIntent().getStringExtra("event name");
 
         ivEmergencySymbol = findViewById(R.id.ivEmergencySymbol);
         ivGuideMap = findViewById(R.id.ivGuideMap);

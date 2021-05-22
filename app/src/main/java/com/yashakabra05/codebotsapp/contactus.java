@@ -1,6 +1,7 @@
 package com.yashakabra05.codebotsapp;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,9 @@ public class contactus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactus);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         iv_yash = findViewById(R.id.iv_yash);
         iv_krishna = findViewById(R.id.iv_krishna);

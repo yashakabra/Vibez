@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.WindowManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -27,10 +28,15 @@ public class MyEventsList extends AppCompatActivity implements MyEventsListAdapt
 
     ArrayList<Images> event_list = new ArrayList<Images>();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_events_list);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         rv_myevents_list = findViewById(R.id.rv_myevents_list);
         rv_myevents_list.setHasFixedSize(true);

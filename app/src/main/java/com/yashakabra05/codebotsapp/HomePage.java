@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
     final int favReturn=3;
     final int calendarReturn=4;
 
-    public static ArrayList<Images> list;
+    public static ArrayList<Images> list ;
     ArrayList<Images> list1,list11,list22,favourites;
 
     RecyclerView rv,rv2;
@@ -43,6 +44,10 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         home=findViewById(R.id.ivHome);
