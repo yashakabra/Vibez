@@ -33,7 +33,7 @@ public class HomePage extends AppCompatActivity implements PersonAdapter.ItemSel
     final int calendarReturn=4;
 
     public static ArrayList<Images> list;
-    ArrayList<Images> list1,list11,list2,list22,favourites;
+    ArrayList<Images> list1,list11,list22,favourites;
 
     RecyclerView rv,rv2;
     RecyclerView.Adapter myadapter,myadapter2;
