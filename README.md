@@ -9,7 +9,3 @@ It has a high security feature that allows the user to
 call authorities just at a click away by sharing his location.
 
 All over it acts as an assistant to the user throughout the event.
-
-Contributors:
-1. https://github.com/yashakabra
-2. https://github.com/krishna1214186
